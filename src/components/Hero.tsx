@@ -69,7 +69,7 @@ export default function Hero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={scrollToContact}
-              className="glass backdrop-blur-sm px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all flex items-center gap-2 group"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:shadow-blue-500/40 transition-all flex items-center gap-2 group hover:from-blue-700 hover:to-blue-800"
             >
               Commencer mon projet
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

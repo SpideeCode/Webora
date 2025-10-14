@@ -7,12 +7,24 @@
 @layer base {
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    @apply antialiased text-gray-800 bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen;
+    @apply antialiased text-gray-800 min-h-screen;
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(186, 230, 253, 0.4) 0%, transparent 30%),
+      radial-gradient(at 90% 80%, rgba(224, 231, 255, 0.4) 0%, transparent 35%),
+      linear-gradient(
+        140deg,
+        #f0f9ff 0%,
+        #e0f2fe 20%,
+        #dbeafe 50%,
+        #e0f2fe 80%,
+        #f0f9ff 100%
+      );
   }
 
-  /* Effet de verre personnalisé */
+  /* Effet de verre clair */
   .glass {
-    @apply bg-white/80 backdrop-blur-lg backdrop-saturate-150 border border-white/20 shadow-glass;
+    @apply bg-white/70 backdrop-blur-lg backdrop-saturate-150 border border-white/30 shadow-md;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
@@ -23,24 +35,27 @@
     backdrop-filter: blur(12px);
   }
 
-  /* Ombre personnalisée pour l'effet verre */
-  .shadow-glass {
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  /* Effet de survol pour les éléments interactifs */
+  .glass-hover:hover {
+    @apply bg-white/80 shadow-lg -translate-y-0.5;
   }
 
-  .shadow-glass-lg {
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+  /* Animation subtile de pulsation pour les éléments importants */
+  @keyframes subtlePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
   }
 
-  /* Dégradé de fond */
-  .bg-gradient-radial {
-    background: radial-gradient(circle at top left, #eaf2ff, #f8faff 70%);
+  .pulse-effect {
+    animation: subtlePulse 3s infinite;
   }
 
-  /* Animation de flottement */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  /* Dégradé de texte */
+  .text-gradient {
+    background: linear-gradient(90deg, #60a5fa, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -78,7 +93,24 @@ select {
 
 /* Boutons avec effet de verre */
 .btn-glass {
-  @apply glass px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:shadow-glass-lg hover:-translate-y-0.5;
+  @apply glass px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:shadow-[0_8px_32px_0_rgba(2,12,27,0.5)] hover:-translate-y-0.5;
+}
+
+.btn-glass-primary {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-xl hover:shadow-blue-500/20;
+}
+
+.btn-glass-secondary {
+  @apply bg-white/5 text-white border border-white/10 hover:bg-white/10;
+}
+
+/* Définition des ombres personnalisées */
+.shadow-custom {
+  box-shadow: 0 8px 32px 0 rgba(2, 12, 27, 0.37);
+}
+
+.shadow-custom-lg {
+  box-shadow: 0 12px 40px 0 rgba(2, 12, 27, 0.5);
 }
 
 /* Effet de flou sur les images de fond */
