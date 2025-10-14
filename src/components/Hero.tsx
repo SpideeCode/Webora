@@ -84,7 +84,7 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -100,7 +100,7 @@ export default function Hero() {
                 <span className="font-medium text-gray-800">{item.text}</span>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
 
