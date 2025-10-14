@@ -36,9 +36,9 @@ export default function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-gradient-to-br from-white to-emerald-50/30 rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-emerald-200/50 transition-all duration-300 border border-gray-100"
+                className="bg-gradient-to-br from-white to-blue-50/30 rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-blue-200/50 transition-all duration-300 border border-gray-100"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
                   <Icon className="w-8 h-8 text-white" />
                 </div>
 
@@ -53,7 +53,7 @@ export default function Services() {
                 <ul className="space-y-3 mb-6">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-gray-700">
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -61,7 +61,7 @@ export default function Services() {
 
                 <button
                   onClick={scrollToContact}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 group"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-2 group"
                 >
                   En savoir plus
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

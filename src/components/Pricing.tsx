@@ -8,7 +8,7 @@ export default function Pricing() {
   };
 
   return (
-    <section id="packs" className="py-24 bg-gradient-to-br from-emerald-50/50 via-white to-teal-50/30">
+    <section id="packs" className="py-24 bg-gradient-to-br from-blue-50/50 via-white to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,12 +35,12 @@ export default function Pricing() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
               className={`relative bg-white rounded-3xl p-8 shadow-xl transition-all duration-300 ${
-                pack.popular ? 'md:-mt-4 md:scale-105 border-4 border-emerald-500' : 'border-2 border-gray-100'
+                pack.popular ? 'md:-mt-4 md:scale-105 border-4 border-blue-600' : 'border-2 border-gray-100'
               }`}
             >
               {pack.popular && (
                 <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                  <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
                     <Sparkles className="w-4 h-4" />
                     Le plus populaire
                   </div>
@@ -48,27 +48,26 @@ export default function Pricing() {
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                  {pack.name}
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {pack.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{pack.tagline}</p>
-
-                <div className="flex items-end justify-center gap-2 mb-2">
-                  <span className={`text-5xl font-bold bg-gradient-to-r ${pack.color} bg-clip-text text-transparent`}>
-                    {pack.price}
+                <p className="text-gray-600">{pack.description}</p>
+                
+                <div className="mt-6">
+                  <span className="text-4xl font-bold text-gray-900">
+                    {pack.price} {pack.currency}
                   </span>
-                  <span className="text-2xl text-gray-600 mb-2">{pack.currency}</span>
+                  {pack.period && (
+                    <span className="text-gray-600">/{pack.period}</span>
+                  )}
                 </div>
-                <p className="text-sm text-gray-500">{pack.period}</p>
               </div>
 
               <ul className="space-y-4 mb-8">
-                {pack.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full bg-gradient-to-r ${pack.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                      <Check className="w-3 h-3 text-white" />
-                    </div>
-                    <span className="text-gray-700 leading-relaxed">{feature}</span>
+                {pack.features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -77,25 +76,15 @@ export default function Pricing() {
                 onClick={scrollToContact}
                 className={`w-full px-6 py-4 rounded-xl font-semibold transition-all ${
                   pack.popular
-                    ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40'
+                    ? 'bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40'
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                 }`}
               >
-                {pack.cta}
+                Choisir ce pack
               </button>
             </motion.div>
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center mt-12 text-gray-600"
-        >
-          Tous nos packs sont personnalisables selon vos besoins. Contactez-nous pour un devis sur-mesure.
-        </motion.p>
       </div>
     </section>
   );
