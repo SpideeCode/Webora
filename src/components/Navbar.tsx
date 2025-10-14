@@ -38,11 +38,13 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-3 group"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg shadow-blue-400/30 group-hover:shadow-xl group-hover:shadow-blue-500/40 transition-all">
-              <span className="text-2xl font-bold text-white">LB</span>
-            </div>
-            <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} hidden sm:block`}>
-              LocalBoost
+            <img 
+              src="/img/logo-transparent-svg.svg" 
+              alt="Webora " 
+              className="h-12 w-auto"
+            />
+            <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} hidden sm:block ml-2`}>
+              Webora
             </span>
           </button>
 

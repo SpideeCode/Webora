@@ -13,7 +13,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              À propos de LocalBoost
+              À propos de Webora
             </h2>
 
             <p className="text-xl text-gray-700 mb-6 leading-relaxed">
@@ -22,7 +22,7 @@ export default function About() {
 
             <p className="text-gray-600 mb-6 leading-relaxed">
               Fondée par deux jeunes entrepreneurs passionnés par le digital et le commerce local,
-              LocalBoost est née d'un constat simple : trop de commerces de proximité excellent dans leur métier
+              Webora est née d'un constat simple : trop de commerces de proximité excellent dans leur métier
               mais peinent à se faire connaître en ligne.
             </p>
 
@@ -69,7 +69,7 @@ export default function About() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                alt="Équipe LocalBoost"
+                alt="Équipe Webora"
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent"></div>
@@ -80,7 +80,7 @@ export default function About() {
                 "Notre passion : voir nos clients réussir"
               </p>
               <p className="text-sm text-gray-600">
-                — L'équipe LocalBoost
+                — L'équipe Webora
               </p>
             </div>
 
