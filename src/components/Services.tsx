@@ -8,20 +8,29 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-24 bg-white">
+    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50/20 via-white/10 to-blue-50/20">
+      {/* Effet de fond subtil */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/20 via-white/5 to-transparent" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWRmMmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PC9zdmc+')] opacity-20" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 bg-blue-100/50 px-4 py-1.5 rounded-full mb-4">
+            <span>Nos Services</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Nos Services
+            Des solutions sur mesure
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des solutions complètes pour propulser votre activité locale vers le succès digital
+            Découvrez comment nous pouvons transformer votre présence en ligne
           </p>
         </motion.div>
 
@@ -33,12 +42,12 @@ export default function Services() {
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-gradient-to-br from-white to-blue-50/30 rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-blue-200/50 transition-all duration-300 border border-gray-100"
+                className="glass p-8 rounded-2xl shadow-glass hover:shadow-glass-lg transition-all duration-300 backdrop-blur-sm bg-white/60 hover:bg-white/70"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 backdrop-blur-sm">
                   <Icon className="w-8 h-8 text-white" />
                 </div>
 

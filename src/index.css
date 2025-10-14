@@ -7,9 +7,102 @@
 @layer base {
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply antialiased text-gray-800 bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen;
+  }
+
+  /* Effet de verre personnalisé */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg backdrop-saturate-150 border border-white/20 shadow-glass;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-lg backdrop-saturate-150 border border-white/10 shadow-2xl;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Ombre personnalisée pour l'effet verre */
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+
+  .shadow-glass-lg {
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  /* Dégradé de fond */
+  .bg-gradient-radial {
+    background: radial-gradient(circle at top left, #eaf2ff, #f8faff 70%);
+  }
+
+  /* Animation de flottement */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }
 
+/* Styles globaux */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Amélioration de la sélection de texte */
+::selection {
+  @apply bg-blue-500/20 text-blue-800;
+}
+
+/* Barre de défilement personnalisée */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-400/30 rounded-full hover:bg-blue-400/50 transition-colors;
+}
+
+/* Amélioration des champs de formulaire */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  @apply w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200;
+}
+
+/* Boutons avec effet de verre */
+.btn-glass {
+  @apply glass px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:shadow-glass-lg hover:-translate-y-0.5;
+}
+
+/* Effet de flou sur les images de fond */
+.bg-blur {
+  @apply relative overflow-hidden;
+}
+
+.bg-blur::before {
+  content: '';
+  @apply absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 -z-10;
+  filter: blur(20px);
+  margin: -20px;
+}
+
+/* Effet de grain subtil */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  mix-blend-mode: overlay;
 }
