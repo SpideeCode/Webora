@@ -40,7 +40,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <span className="inline-block w-fit px-4 py-1 bg-emerald-500 text-white text-sm font-semibold rounded-full mb-3">
+                  <span className="inline-block w-fit px-4 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full mb-3">
                     {project.category}
                   </span>
 
