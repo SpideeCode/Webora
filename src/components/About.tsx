@@ -3,7 +3,7 @@ import { Heart, Target, Users } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="apropos" className="py-24 bg-gradient-to-br from-white via-emerald-50/30 to-white">
+    <section id="apropos" className="py-24 bg-background-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -34,7 +34,7 @@ export default function About() {
 
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="text-center p-6 bg-white rounded-xl shadow-md">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">50+</div>
@@ -42,7 +42,7 @@ export default function About() {
               </div>
 
               <div className="text-center p-6 bg-white rounded-xl shadow-md">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Target className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">100%</div>
@@ -50,7 +50,7 @@ export default function About() {
               </div>
 
               <div className="text-center p-6 bg-white rounded-xl shadow-md">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Heart className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">2ans</div>
@@ -72,7 +72,7 @@ export default function About() {
                 alt="Équipe Webora"
                 className="w-full h-auto"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
             </div>
 
             <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs">
@@ -84,7 +84,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full blur-3xl opacity-50"></div>
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full blur-3xl opacity-30"></div>
           </motion.div>
         </div>
       </div>

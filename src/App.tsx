@@ -9,33 +9,33 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="min-h-screen bg-background-light">
       <Navbar />
       <div className="w-full">
         <div className="w-full">
           <Hero />
         </div>
-        <div className="w-full bg-white/80 py-16">
+        <div className="w-full py-16 bg-background-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Services />
           </div>
         </div>
-        <div className="w-full py-16">
+        <div className="w-full py-16 bg-background-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Pricing />
           </div>
         </div>
-        <div className="w-full bg-white/80 py-16">
+        <div className="w-full py-16 bg-background-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Portfolio />
           </div>
         </div>
-        <div className="w-full py-16">
+        <div className="w-full py-16 bg-background-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <About />
           </div>
         </div>
-        <div className="w-full bg-white/80 py-16">
+        <div className="w-full py-16 bg-background-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Contact />
           </div>
