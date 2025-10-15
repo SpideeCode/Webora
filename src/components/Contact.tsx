@@ -50,15 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white/40 to-blue-100/20"
-    >
-      {/* arrière-plan subtil */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_70%)]" />
-      </div>
-
+    <section id="contact" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,20 +70,20 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8">
           {/* gauche : infos */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="backdrop-blur-lg bg-white/40 border border-white/30 p-8 rounded-2xl shadow-lg"
+            className="p-8 rounded-2xl shadow-md"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Nos coordonnées
             </h3>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100/50 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50">
                   <Mail className="w-6 h-6 text-blue-700" />
                 </div>
                 <div>
@@ -106,7 +98,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100/50 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50">
                   <Phone className="w-6 h-6 text-blue-700" />
                 </div>
                 <div>
@@ -127,7 +119,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="backdrop-blur-lg bg-white/40 border border-white/30 p-8 rounded-2xl shadow-lg"
+            className="p-8 rounded-2xl shadow-md"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Envoyez-nous un message
@@ -148,7 +140,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                   placeholder="Votre nom"
                 />
               </div>
@@ -167,7 +159,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                   placeholder="votre@email.com"
                 />
               </div>
@@ -186,47 +178,73 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
-                  placeholder="Décrivez votre projet..."
-                />
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                  placeholder="Dites-nous comment nous pouvons vous aider..."
+                ></textarea>
               </div>
 
-              {/* Message de confirmation / erreur */}
-              {status && (
-                <div
-                  className={`flex items-center gap-2 text-sm font-medium ${
-                    status === "success"
-                      ? "text-green-600 bg-green-50"
-                      : "text-red-600 bg-red-50"
-                  } p-3 rounded-lg border ${
-                    status === "success"
-                      ? "border-green-200"
-                      : "border-red-200"
-                  }`}
-                >
-                  {status === "success" ? (
-                    <CheckCircle className="w-5 h-5" />
-                  ) : (
-                    <XCircle className="w-5 h-5" />
-                  )}
-                  {status === "success"
-                    ? "Message envoyé avec succès !"
-                    : "Erreur d’envoi. Réessayez plus tard."}
-                </div>
-              )}
-
-              <div>
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-700 to-blue-900 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group disabled:opacity-60"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition"
                 >
-                  {loading ? "Envoi..." : "Envoyer le message"}
-                  {!loading && (
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  {loading ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Envoyer le message
+                    </>
                   )}
                 </button>
               </div>
+
+              {status === "success" && (
+                <div className="mt-4 p-4 bg-green-50 text-green-800 rounded-lg flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Message envoyé avec succès !</p>
+                    <p className="text-sm mt-1">
+                      Nous vous répondrons dans les plus brefs délais.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="mt-4 p-4 bg-red-50 text-red-800 rounded-lg flex items-start gap-3">
+                  <XCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Une erreur est survenue</p>
+                    <p className="text-sm mt-1">
+                      Veuillez réessayer ou nous contacter par téléphone.
+                    </p>
+                  </div>
+                </div>
+              )}
             </form>
           </motion.div>
         </div>
