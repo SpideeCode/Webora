@@ -15,9 +15,24 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    // Fermer le menu mobile immédiatement
     setIsMobileMenuOpen(false);
+    
+    // Attendre la fin de l'animation de fermeture du menu avant de faire défiler
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        // Calculer la position en tenant compte de la hauteur de la navbar
+        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        // Faire défiler jusqu'à la position calculée
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Temps correspondant à la durée de l'animation de fermeture du menu
   };
 
   const navLinks = [
