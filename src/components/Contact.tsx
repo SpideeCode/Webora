@@ -96,21 +96,6 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50">
-                  <Phone className="w-6 h-6 text-blue-700" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">Téléphone</h4>
-                  <a
-                    href="tel:+32488361492"
-                    className="text-blue-600 hover:underline"
-                  >
-                    +32 488 36 14 92
-                  </a>
-                </div>
-              </div>
             </div>
           </motion.div>
 
