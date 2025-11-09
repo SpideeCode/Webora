@@ -2,8 +2,20 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection('contact');
   };
 
   return (
@@ -20,7 +32,7 @@ export default function Hero() {
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,14 +43,14 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="glass backdrop-blur-sm bg-white/60 inline-flex items-center gap-2 mb-8 px-6 py-2.5 rounded-full text-sm font-medium border border-white/20 shadow-glass hover:shadow-glass-lg transition-all"
+            className="glass backdrop-blur-sm bg-white/60 inline-flex items-center gap-2 mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium border border-white/20 shadow-glass hover:shadow-glass-lg transition-all"
           >
-            <Sparkles className="w-4 h-4 text-blue-600" />
+            <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
             <span className="text-blue-800">Agence digitale d'excellence</span>
           </motion.div>
 
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 md:mb-8 leading-tight tracking-tight px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -51,7 +63,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p 
-            className="text-xl text-gray-700 max-w-2xl mx-auto mb-12"
+            className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-8 md:mb-12 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -60,7 +72,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -69,19 +81,19 @@ export default function Hero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={scrollToContact}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:shadow-blue-500/40 transition-all flex items-center gap-2 group hover:from-blue-700 hover:to-blue-800"
+              className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl hover:shadow-blue-500/40 transition-all flex items-center justify-center gap-2 group"
             >
               Commencer mon projet
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
-            <motion.a
-              href="#realisations"
+            <motion.button
+              onClick={() => scrollToSection('realisations')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-button-secondary.bg text-button-secondary.text rounded-xl font-medium text-lg border border-gray-200 hover:bg-button-secondary.hover.bg hover:text-button-secondary.hover.text transition-all duration-300 shadow hover:shadow-md"
+              className="px-6 md:px-8 py-3 md:py-4 bg-white/90 text-blue-700 rounded-xl font-medium text-base md:text-lg border border-gray-200 hover:bg-white hover:text-blue-800 transition-all duration-300 shadow hover:shadow-md"
             >
               Nos réalisations
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           {/* <motion.div

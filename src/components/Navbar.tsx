@@ -56,7 +56,7 @@ export default function Navbar() {
             <img 
               src="/img/logo-transparent-svg.svg" 
               alt="Webora " 
-              className="h-12 w-auto"
+              className="h-10 sm:h-12 w-auto"
             />
             <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} hidden sm:block ml-2`}>
               Webora

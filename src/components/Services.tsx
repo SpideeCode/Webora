@@ -4,11 +4,19 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Services() {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('contact');
+    if (element) {
+      const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50/20 via-white/10 to-blue-50/20">
+    <section id="services" className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-50/20 via-white/10 to-blue-50/20">
       {/* Effet de fond subtil */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/20 via-white/5 to-transparent" />
@@ -26,15 +34,15 @@ export default function Services() {
           <div className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 bg-blue-100/50 px-4 py-1.5 rounded-full mb-4">
             <span>Nos Services</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Des solutions sur mesure
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
             Découvrez comment nous pouvons transformer votre présence en ligne
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -45,17 +53,17 @@ export default function Services() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="glass p-8 rounded-2xl shadow-glass hover:shadow-glass-lg transition-all duration-300 backdrop-blur-sm bg-white/60 hover:bg-white/70"
+                className="glass p-6 md:p-8 rounded-2xl shadow-glass hover:shadow-glass-lg transition-all duration-300 backdrop-blur-sm bg-white/60 hover:bg-white/70"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 backdrop-blur-sm">
                   <Icon className="w-8 h-8 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
                   {service.description}
                 </p>
 

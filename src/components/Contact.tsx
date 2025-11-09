@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 relative overflow-hidden bg-background-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,35 +62,35 @@ export default function Contact() {
           <div className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 bg-blue-100/50 px-4 py-1.5 rounded-full mb-4">
             <span>Contact</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Prenons contact
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
             Discutons de votre projet et voyons comment nous pouvons vous aider
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* gauche : infos */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="p-8 rounded-2xl shadow-md"
+            className="p-6 md:p-8 rounded-2xl shadow-md bg-white/80 backdrop-blur-sm"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
               Nos coordonnées
             </h3>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50">
-                  <Mail className="w-6 h-6 text-blue-700" />
+            <div className="space-y-4 sm:space-y-6">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-gray-50 flex-shrink-0">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-700" />
                 </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">Email</h4>
+                <div className="min-w-0">
+                  <h4 className="font-medium text-gray-900 text-sm sm:text-base">Email</h4>
                   <a
                     href="mailto:contact.weboraagency@gmail.com"
-                    className="text-blue-600 hover:underline"
+                    className="text-sm sm:text-base text-blue-600 hover:underline break-all"
                   >
                     contact.weboraagency@gmail.com
                   </a>
@@ -104,9 +104,9 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 rounded-2xl shadow-md"
+            className="p-6 md:p-8 rounded-2xl shadow-md bg-white/80 backdrop-blur-sm"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
               Envoyez-nous un message
             </h3>
 

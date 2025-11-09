@@ -28,30 +28,20 @@ function App() {
         <div className="w-full">
           <Hero />
         </div>
-        <div className="w-full py-16 bg-background-light/80 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Services />
-          </div>
+        <div className="w-full">
+          <Services />
         </div>
-        <div className="w-full py-16 bg-background-light/80 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Pricing />
-          </div>
+        <div className="w-full">
+          <Pricing />
         </div>
-        <div className="w-full py-16 bg-background-light/80 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Portfolio />
-          </div>
+        <div className="w-full">
+          <Portfolio />
         </div>
-        <div className="w-full py-16 bg-background-light/80 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <About />
-          </div>
+        <div className="w-full">
+          <About />
         </div>
-        <div className="w-full py-16 bg-background-light/80 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Contact />
-          </div>
+        <div className="w-full">
+          <Contact />
         </div>
       </div>
       <Footer />
