@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white text-xl font-bold mb-4">Webora</h3>
             <p className="text-sm leading-relaxed">
-              Votre partenaire digital pour propulser votre commerce local vers le succès en ligne.
+              Votre partenaire digital à Bruxelles pour propulser votre commerce local vers le succès en ligne.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a href="mailto:contact.weboraagency@gmail.com" className="hover:text-blue-400 transition-colors break-all">
-                  contact.weboraagency@gmail.com 
+                  contact.weboraagency@gmail.com
                 </a>
               </li>
               {/* <li className="flex items-center gap-2">
@@ -92,6 +92,13 @@ export default function Footer() {
                 </svg>
                 <span>123 Rue du Commerce,<br />75001 Paris, France</span>
               </li> */}
+              <li className="flex items-start gap-2">
+                <svg className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Bruxelles, Belgique</span>
+              </li>
             </ul>
 
             <div className="mt-4 flex flex-wrap gap-4">

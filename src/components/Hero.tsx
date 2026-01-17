@@ -68,7 +68,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Nous créons des expériences digitales sur mesure pour les commerces locaux qui veulent se démarquer et attirer plus de clients.
+            Nous créons des expériences digitales sur mesure pour les commerces locaux à Bruxelles qui veulent se démarquer et attirer plus de clients.
           </motion.p>
 
           <motion.div 

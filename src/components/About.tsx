@@ -21,7 +21,7 @@ export default function About() {
             </p>
 
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-              Fondée par deux jeunes entrepreneurs passionnés par le digital et le commerce local,
+              Fondée par deux jeunes entrepreneurs bruxellois passionnés par le digital et le commerce local,
               Webora est née d'un constat simple : trop de commerces de proximité excellent dans leur métier
               mais peinent à se faire connaître en ligne.
             </p>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, CheckCircle, XCircle } from "lucide-react";
+import { Mail, Send, CheckCircle, XCircle } from "lucide-react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
@@ -13,7 +13,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"success" | "error" | null>(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
@@ -42,7 +42,7 @@ export default function Contact() {
       .finally(() => setLoading(false));
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -94,6 +94,20 @@ export default function Contact() {
                   >
                     contact.weboraagency@gmail.com
                   </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-gray-50 flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-medium text-gray-900 text-sm sm:text-base">Localisation</h4>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    Bruxelles, Belgique
+                  </p>
                 </div>
               </div>
             </div>
