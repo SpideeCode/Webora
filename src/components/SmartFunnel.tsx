@@ -107,7 +107,7 @@ export default function SmartFunnel() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto min-h-[500px] flex flex-col">
+        <div className="w-full max-w-4xl mx-auto min-h-[500px] flex flex-col" style={{ transform: 'translateZ(0)' }}>
             {/* Progress Bar */}
             <div className="flex justify-between mb-16 px-4 relative">
                 {/* Connecting Lines Background */}
@@ -148,7 +148,7 @@ export default function SmartFunnel() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
                             className="py-4"
                         >
                             {currentStep === 0 && (
@@ -156,13 +156,13 @@ export default function SmartFunnel() {
                                     {serviceOptions.map((opt) => (
                                         <motion.button
                                             key={opt.id}
-                                            whileHover={{ scale: 1.02, y: -5 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => handleServiceSelect(opt.id as ServiceType)}
                                             className={`p-6 rounded-3xl border text-left transition-all group ${data.service === opt.id
                                                 ? 'bg-accent-magenta/10 border-accent-magenta ring-1 ring-accent-magenta'
                                                 : 'bg-white/5 border-white/10 hover:border-white/20'
                                                 }`}
+                                            style={{ willChange: 'transform, opacity' }}
                                         >
                                             <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors ${data.service === opt.id ? 'bg-accent-magenta text-white' : 'bg-white/5 text-gray-400 group-hover:text-white'
                                                 }`}>
@@ -182,10 +182,11 @@ export default function SmartFunnel() {
                                             <button
                                                 key={detail}
                                                 onClick={() => toggleDetail(detail)}
-                                                className={`p-5 rounded-2xl border text-left transition-all flex items-center justify-between ${data.details.includes(detail)
+                                                className={`p-5 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between ${data.details.includes(detail)
                                                     ? 'bg-accent-cyan/10 border-accent-cyan text-white'
                                                     : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                                                     }`}
+                                                style={{ willChange: 'transform, opacity' }}
                                             >
                                                 <span className="font-bold uppercase tracking-wider text-sm">{detail}</span>
                                                 {data.details.includes(detail) && <CheckCircle className="text-accent-cyan" size={18} />}
@@ -214,10 +215,11 @@ export default function SmartFunnel() {
                                             <button
                                                 key={budget}
                                                 onClick={() => setData({ ...data, budget })}
-                                                className={`p-6 rounded-2xl border transition-all text-center ${data.budget === budget
+                                                className={`p-6 rounded-2xl border transition-all duration-300 text-center ${data.budget === budget
                                                     ? 'bg-accent-magenta border-accent-magenta text-white shadow-[0_10px_30px_rgba(255,0,128,0.2)]'
                                                     : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                                                     }`}
+                                                style={{ willChange: 'transform, opacity' }}
                                             >
                                                 <span className="font-black text-sm uppercase tracking-[0.2em]">{budget}</span>
                                             </button>
