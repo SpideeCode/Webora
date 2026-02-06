@@ -47,6 +47,7 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         className="relative z-10 max-w-5xl mx-auto text-center"
+        style={{ transform: 'translateZ(0)' }}
       >
         <motion.div
           variants={itemVariants}

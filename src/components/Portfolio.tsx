@@ -38,6 +38,7 @@ export default function Portfolio() {
                 <motion.div
                   whileHover={{ rotateY: index % 2 === 0 ? 5 : -5, rotateX: 2, scale: 1.02 }}
                   className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 ease-out"
+                  style={{ transform: 'translateZ(0)' }}
                 >
                   <img
                     src={project.image}

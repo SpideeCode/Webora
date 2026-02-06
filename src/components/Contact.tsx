@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Instagram, Linkedin, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import SmartFunnel from "./SmartFunnel";
+import { Suspense, lazy } from "react";
+
+const SmartFunnel = lazy(() => import("./SmartFunnel"));
+
+const FunnelLoader = () => (
+  <div className="flex items-center justify-center p-12">
+    <div className="w-8 h-8 border-2 border-accent-magenta border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -48,7 +56,9 @@ export default function Contact() {
             className="p-1 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent order-1"
           >
             <div className="bg-primary p-6 md:p-12 rounded-[39px] glass-card">
-              <SmartFunnel />
+              <Suspense fallback={<FunnelLoader />}>
+                <SmartFunnel />
+              </Suspense>
             </div>
           </motion.div>
 
