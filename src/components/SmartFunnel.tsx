@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
-type ServiceType = 'Web' | 'SaaS' | 'Video' | 'AI' | null;
+type ServiceType = 'WEB & APPS' | 'IA & AUTOMATISATION' | 'PRODUCTION VISUELLE' | 'CONTENT & POST-PROD' | null;
 
 interface FormData {
     service: ServiceType;
@@ -23,25 +23,27 @@ interface FormData {
 }
 
 const steps = [
-    { id: 'service', title: 'Quel est votre objectif ?' },
-    { id: 'details', title: 'Précisez vos besoins' },
-    { id: 'budget', title: 'Budget & Timeline' },
-    { id: 'contact', title: 'Finalisons' }
+    { id: 'service', title: 'Univers' },
+    { id: 'details', title: 'Services' },
+    { id: 'budget', title: 'Budget' },
+    { id: 'contact', title: 'Identité' }
 ];
 
 const serviceOptions = [
-    { id: 'Web', icon: Globe, label: 'Site Web Premium', desc: 'Vitrines & E-commerce' },
-    { id: 'SaaS', icon: Cpu, label: 'SaaS & App Custom', desc: 'Plateformes complexes' },
-    { id: 'Video', icon: Video, label: 'Production Vidéo', desc: 'Publicité & Storytelling' },
-    { id: 'AI', icon: Zap, label: 'Intégration IA', desc: 'Automatisation & Data' },
+    { id: 'WEB & APPS', icon: Globe, label: 'WEB & APPS', desc: 'Site Vitrine, SaaS complet' },
+    { id: 'IA & AUTOMATISATION', icon: Cpu, label: 'IA & AUTOMATISATION', desc: 'Automatisation IA, Chatbot' },
+    { id: 'PRODUCTION VISUELLE', icon: Video, label: 'PRODUCTION VISUELLE', desc: 'Photoshoot, Vidéo Pub' },
+    { id: 'CONTENT & POST-PROD', icon: Zap, label: 'CONTENT & POST-PROD', desc: 'Montage, Contenu RS' },
 ];
 
 const detailOptions: Record<string, string[]> = {
-    Web: ['Redesign Complet', 'Optimisation SEO', 'E-commerce', 'Maintenance'],
-    SaaS: ['MVP Développement', 'Architecture Cloud', 'Dashboard UX', 'API Integration'],
-    Video: ['Spot Publicitaire', 'Contenu RS', 'Brand Movie', 'Animation 2D/3D'],
-    AI: ['Chatbot Custom', 'Workflow Automation', 'Analyse Prédictive', 'Fine-tuning LLM'],
+    'WEB & APPS': ['Site Vitrine', 'SaaS complet', 'E-commerce', 'Refonte UI/UX'],
+    'IA & AUTOMATISATION': ['Automatisation IA', 'Chatbot Intelligent', 'Analyse de Données', 'Custom Agent'],
+    'PRODUCTION VISUELLE': ['Photoshoot', 'Vidéo Pub', 'Brand Movie', 'Drone 4K'],
+    'CONTENT & POST-PROD': ['Montage Vidéo', 'Retouche Photo', 'Contenu Réseaux Sociaux', 'Motion Design'],
 };
+
+const budgetOptions = ['-500€', '500€ - 1000€', '1000€ - 2000€', '2000€+'];
 
 export default function SmartFunnel() {
     const [currentStep, setCurrentStep] = useState(0);
@@ -207,17 +209,17 @@ export default function SmartFunnel() {
 
                             {currentStep === 2 && (
                                 <div className="space-y-6">
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                        {['< 5k', '5k - 15k', '15k+'].map((budget) => (
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        {budgetOptions.map((budget) => (
                                             <button
                                                 key={budget}
                                                 onClick={() => setData({ ...data, budget })}
                                                 className={`p-6 rounded-2xl border transition-all text-center ${data.budget === budget
-                                                    ? 'bg-accent-magenta border-accent-magenta text-white'
-                                                    : 'bg-white/5 border-white/10 text-gray-400'
+                                                    ? 'bg-accent-magenta border-accent-magenta text-white shadow-[0_10px_30px_rgba(255,0,128,0.2)]'
+                                                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                                                     }`}
                                             >
-                                                <span className="font-black text-sm uppercase tracking-widest">{budget}</span>
+                                                <span className="font-black text-sm uppercase tracking-[0.2em]">{budget}</span>
                                             </button>
                                         ))}
                                     </div>
