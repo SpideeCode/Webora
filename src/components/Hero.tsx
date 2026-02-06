@@ -19,18 +19,27 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 1, y: 10 },
+  const titleVariants = {
+    hidden: { opacity: 1, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } as any
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } as any
     },
   };
 
@@ -63,7 +72,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          variants={itemVariants}
+          variants={titleVariants}
           className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tighter"
         >
           {t('hero.headline_1')} <br />
