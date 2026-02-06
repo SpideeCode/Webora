@@ -1,63 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Animations pour les éléments géométriques */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
 @layer base {
+  :root {
+    --primary: #050505;
+    --accent-magenta: #d946ef;
+    --accent-cyan: #0ea5e9;
+  }
+
   html {
     scroll-behavior: smooth;
+    background-color: var(--primary);
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    @apply antialiased text-gray-800 min-h-screen;
-    background-color: #f8fafc;
-    background-image: 
-      radial-gradient(at 10% 20%, rgba(186, 230, 253, 0.2) 0%, transparent 30%),
-      radial-gradient(at 90% 80%, rgba(224, 231, 255, 0.2) 0%, transparent 35%);
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    @apply antialiased text-gray-200 min-h-screen bg-[#050505] overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
   }
 
-  /* Autres styles de base... */
-  
-  /* Effet de verre pour les cartes */
-  .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+  ::selection {
+    background: rgba(217, 70, 239, 0.3);
+    color: white;
   }
-  
-  .shadow-glass {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-  
-  .shadow-glass-lg {
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+
+  ::-webkit-scrollbar-track {
+    background: var(--primary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-magenta);
+  }
+}
+
+@layer components {
+  .bg-glow-magenta {
+    @apply relative after:absolute after:inset-0 after:bg-accent-magenta/20 after:blur-[100px] after:-z-10;
+  }
+
+  .bg-glow-cyan {
+    @apply relative after:absolute after:inset-0 after:bg-accent-cyan/20 after:blur-[100px] after:-z-10;
   }
 }

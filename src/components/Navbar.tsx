@@ -1,64 +1,61 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-    // Fermer le menu mobile immédiatement
     setIsMobileMenuOpen(false);
-    
-    // Attendre la fin de l'animation de fermeture du menu avant de faire défiler
     setTimeout(() => {
       const element = document.getElementById(id);
       if (element) {
-        // Calculer la position en tenant compte de la hauteur de la navbar
-        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-        
-        // Faire défiler jusqu'à la position calculée
         window.scrollTo({
-          top: elementPosition,
+          top: element.offsetTop - 80,
           behavior: 'smooth'
         });
       }
-    }, 300); // Temps correspondant à la durée de l'animation de fermeture du menu
+    }, 300);
   };
 
   const navLinks = [
-    { id: 'services', label: 'Services' },
-    { id: 'packs', label: 'Packs' },
-    { id: 'realisations', label: 'Réalisations' },
-    { id: 'apropos', label: 'À propos' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'services', label: t('nav.expertises') },
+    { id: 'realisations', label: t('nav.portfolio') },
+    { id: 'methodology', label: t('nav.approach') },
+    { id: 'apropos', label: t('nav.agency') },
+    { id: 'contact', label: t('nav.contact') }
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass py-2 shadow-glass' : 'py-4'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+      ? 'py-4 px-4 md:px-8'
+      : 'py-6 px-4 md:px-8'
+      }`}>
+      <div className={`max-w-7xl mx-auto transition-all duration-500 rounded-full px-6 py-3 ${isScrolled ? 'glass-morphism shadow-glass' : 'bg-transparent'
+        }`}>
         <div className="flex justify-between items-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 group"
           >
-            <img 
-              src="/img/logo-transparent-svg.svg" 
-              alt="Webora " 
-              className="h-10 sm:h-12 w-auto"
+            <img
+              src="/img/logo-transparent-svg.svg"
+              alt="Webora"
+              className="h-8 w-auto brightness-200"
             />
-            <span className={`text-2xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} hidden sm:block ml-2`}>
+            <span className="text-xl font-black text-white tracking-widest uppercase">
               Webora
             </span>
           </button>
@@ -69,62 +66,60 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`font-medium transition-colors hover:text-blue-700 ${
-                  isScrolled ? 'text-gray-700' : 'text-gray-700'
-                }`}
+                className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-white transition-colors"
               >
                 {link.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="px-6 py-2.5 bg-gradient-to-r from-button-primary-from to-button-primary-to text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all hover:bg-gradient-to-r hover:from-button-primary-hover.from hover:to-button-primary-hover.to"
-            >
-              Devis gratuit
-            </button>
+            <div className="flex items-center gap-4 border-l border-white/10 pl-8">
+              <LanguageSwitcher />
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-6 py-2 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all"
+              >
+                {t('nav.cta')}
+              </button>
+            </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile Hamburguer */}
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitcher />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-700 hover:text-blue-700 focus:outline-none"
+              className="p-2 text-white focus:outline-none"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="glass md:hidden overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[-1] bg-primary pt-24 px-8"
           >
-            <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="flex flex-col gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50/50 hover:text-blue-700 rounded-lg transition-colors font-medium"
+                  className="text-3xl font-black text-white hover:text-accent-magenta transition-colors text-left"
                 >
                   {link.label}
                 </button>
               ))}
+              <div className="h-[1px] w-full bg-white/10 my-4" />
               <button
                 onClick={() => scrollToSection('contact')}
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 mt-4"
+                className="w-full py-5 bg-white text-black font-black uppercase tracking-widest rounded-2xl"
               >
-                Devis gratuit
+                {t('nav.cta')}
               </button>
             </div>
           </motion.div>
@@ -133,3 +128,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

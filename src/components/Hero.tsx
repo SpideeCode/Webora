@@ -1,141 +1,119 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Rocket, FileText, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+  const { t } = useTranslation();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
       window.scrollTo({
-        top: elementPosition,
+        top: element.offsetTop - 80,
         behavior: 'smooth'
       });
     }
   };
 
-  const scrollToContact = () => {
-    scrollToSection('contact');
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any
+    },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background-light">
-      {/* Effet de fond avec dégradé */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/30 via-white/5 to-transparent" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWRmMmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PC9zdmc+')] opacity-20" />
-      </div>
-      
-      {/* Effets de lumière et de profondeur */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary px-4">
+      {/* Dynamic Background Aura */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-accent-magenta/10 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-accent-cyan/10 rounded-full blur-[150px] animation-delay-2000 animate-pulse-slow" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-150 brightness-100 mix-blend-overlay" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 text-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-5xl mx-auto text-center"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mx-auto"
+          variants={itemVariants}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-8 border border-white/10"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="glass backdrop-blur-sm bg-white/60 inline-flex items-center gap-2 mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium border border-white/20 shadow-glass hover:shadow-glass-lg transition-all"
-          >
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
-            <span className="text-blue-800">Agence digitale d'excellence</span>
-          </motion.div>
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-magenta opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-magenta"></span>
+          </span>
+          <span className="text-xs md:text-sm font-medium tracking-wider uppercase text-gray-400">
+            {t('hero.badge')}
+          </span>
+        </motion.div>
 
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 md:mb-8 leading-tight tracking-tight px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        <motion.h1
+          variants={itemVariants}
+          className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tighter"
+        >
+          {t('hero.headline_1')} <br />
+          <span className="text-gradient bg-gradient-to-r from-accent-magenta via-accent-purple to-accent-cyan">
+            {t('hero.headline_2')}
+          </span>
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+        >
+          {t('hero.description')}
+        </motion.p>
+
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95"
           >
-            Donnez vie à votre
-            <br />
-            <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
-              présence digitale
+            <span className="relative z-10 flex items-center gap-2">
+              {t('hero.cta_primary')} <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </span>
-          </motion.h1>
+          </button>
 
-          <motion.p 
-            className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-8 md:mb-12 px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          <button
+            onClick={() => scrollToSection('realisations')}
+            className="group px-8 py-4 glass-morphism text-white font-bold rounded-full border border-white/10 hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
           >
-            Nous créons des expériences digitales sur mesure pour les commerces locaux à Bruxelles qui veulent se démarquer et attirer plus de clients.
-          </motion.p>
-
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={scrollToContact}
-              className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl hover:shadow-blue-500/40 transition-all flex items-center justify-center gap-2 group"
-            >
-              Commencer mon projet
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.button
-              onClick={() => scrollToSection('realisations')}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 md:px-8 py-3 md:py-4 bg-white/90 text-blue-700 rounded-xl font-medium text-base md:text-lg border border-gray-200 hover:bg-white hover:text-blue-800 transition-all duration-300 shadow hover:shadow-md"
-            >
-              Nos réalisations
-            </motion.button>
-          </motion.div>
-
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto"
-          >
-            {[
-              { text: 'Design sur mesure', icon: '✨' },
-              { text: 'Développement performant', icon: '⚡' },
-              { text: 'Support réactif', icon: '💬' }
-            ].map((item, index) => (
-              <div key={index} className="glass backdrop-blur-sm bg-white/60 p-6 rounded-2xl border border-white/20 shadow-glass hover:shadow-glass-lg transition-all hover:-translate-y-1">
-                <span className="text-2xl block mb-2">{item.icon}</span>
-                <span className="font-medium text-gray-800">{item.text}</span>
-              </div>
-            ))}
-          </motion.div> */}
+            {t('hero.cta_secondary')} <FileText className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </button>
         </motion.div>
-      </div>
+      </motion.div>
 
-      <div className="w-full absolute bottom-10 flex justify-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="glass p-3 rounded-full border border-white/20"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-blue-300/50 rounded-full flex items-start justify-center p-1"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-blue-500 rounded-full"
-            />
-          </motion.div>
-        </motion.div>
-      </div>
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+        onClick={() => scrollToSection('realisations')}
+      >
+        <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Discover</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent" />
+        <ChevronDown className="w-4 h-4 text-gray-500 animate-bounce" />
+      </motion.div>
     </section>
   );
 }
+

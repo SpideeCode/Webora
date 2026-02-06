@@ -1,0 +1,216 @@
+{
+    "nav": {
+        "expertises": "Expertises",
+        "portfolio": "Études de cas",
+        "approach": "Approche",
+        "agency": "L'agence",
+        "contact": "Contact",
+        "cta": "Demander un devis"
+    },
+    "hero": {
+        "badge": "Webora | Studio Digital",
+        "headline_1": "Propulsez votre",
+        "headline_2": "Univers Digital",
+        "description": "Nous créons des solutions digitales performantes pour les entreprises qui visent l'excellence.",
+        "cta_primary": "Lancer mon Projet",
+        "cta_secondary": "Nos Réalisations"
+    },
+    "methodology": {
+        "badge": "Notre Processus",
+        "title": "Notre Méthode",
+        "steps": {
+            "step1_title": "Analyse",
+            "step1_desc": "Immersion dans votre projet pour définir une stratégie sur mesure.",
+            "step2_title": "Design",
+            "step2_desc": "Conception d'une interface esthétique et d'un parcours utilisateur optimisé.",
+            "step3_title": "Développement",
+            "step3_desc": "Construction technique robuste utilisant les technologies les plus fiables.",
+            "step4_title": "Lancement",
+            "step4_desc": "Mise en ligne et accompagnement pour assurer votre réussite."
+        }
+    },
+    "contact": {
+        "badge": "Contact",
+        "title": "Prêt à lancer votre projet ?",
+        "description": "Discutons de vos besoins et construisons ensemble votre présence en ligne.",
+        "labels": {
+            "name": "Nom complet",
+            "email": "Adresse Email",
+            "type": "Type de projet",
+            "budget": "Budget estimé",
+            "message": "Détails du projet"
+        },
+        "placeholders": {
+            "name": "Votre Nom",
+            "email": "votre@email.com",
+            "message": "Parlez-nous de vos objectifs..."
+        },
+        "submit": "Envoyer ma demande",
+        "sending": "Envoi en cours...",
+        "success": "Message envoyé avec succès",
+        "error": "Une erreur est survenue"
+    },
+    "services": {
+        "badge": "Nos Expertises",
+        "title": "Une fusion entre créativité et précision technique pour vos projets digitaux.",
+        "categories": {
+            "all": "Tous",
+            "web_saas": "Web & SaaS",
+            "content": "Production Contenu",
+            "strategy_ai": "Stratégie & IA"
+        },
+        "items": {
+            "website": {
+                "title": "Sites Web Performance",
+                "description": "Sites vitrines et e-commerce rapides, conçus pour la conversion et l'expérience utilisateur.",
+                "features": [
+                    "Design moderne",
+                    "Optimisation SEO",
+                    "Adapté au mobile",
+                    "Hébergement sécurisé"
+                ]
+            },
+            "saas": {
+                "title": "SaaS & Applications",
+                "description": "Développement d'applications métiers et plateformes complexes sur-mesure.",
+                "features": [
+                    "Architecture évolutive",
+                    "Interfaces complexes",
+                    "Intégrations API",
+                    "Sécurité renforcée"
+                ]
+            },
+            "video": {
+                "title": "Production Vidéo",
+                "description": "Contenu vidéo de haute qualité pour présenter votre marque et vos produits.",
+                "features": [
+                    "Storytelling",
+                    "Qualité 4K",
+                    "Montage dynamique",
+                    "Formats adaptés"
+                ]
+            },
+            "photo": {
+                "title": "Photographie Pro",
+                "description": "Shootings et création de contenu visuel pour sublimer votre identité.",
+                "features": [
+                    "Shootings Produits",
+                    "Direction Artistique",
+                    "Retouche Pro",
+                    "Galerie d'images"
+                ]
+            },
+            "ai": {
+                "title": "Intégration IA",
+                "description": "Mise en place d'outils d'IA pour automatiser vos processus et gagner en efficacité.",
+                "features": [
+                    "Chatbots intelligents",
+                    "Automatisation",
+                    "Analyse de données",
+                    "Conseil IA"
+                ]
+            },
+            "strategy": {
+                "title": "Stratégie Digitale",
+                "description": "Accompagnement complet pour développer votre visibilité et votre ROI.",
+                "features": [
+                    "Audit & Analyse",
+                    "Growth Hacking",
+                    "Publicité en ligne",
+                    "Optimisation SEO"
+                ]
+            }
+        }
+    },
+    "portfolio": {
+        "badge": "Portfolio",
+        "title": "Nos Réalisations",
+        "description": "Découvrez des projets concrets que nous avons menés avec succès.",
+        "cta": "Voir le site",
+        "challenge": "Le Challenge",
+        "approach": "Notre Solution",
+        "impact": "Impact",
+        "items": {
+            "1": {
+                "category": "SaaS Restaurant & Menu 3D/AR",
+                "description": "Solution complète de digitalisation pour la restauration.",
+                "problem": "Améliorer la gestion des commandes et l'attractivité des menus.",
+                "solution": "Plateforme SaaS avec QR Code et menus en Réalité Augmentée.",
+                "results": "+40% de rotation de table"
+            },
+            "2": {
+                "category": "Services aux Particuliers",
+                "description": "Capture de leads pour courtier en énergie.",
+                "problem": "Convertir les visiteurs en clients qualifiés efficacement.",
+                "solution": "Design orienté conversion avec tunnels de vente optimisés.",
+                "results": "Conversion multipliée par 3"
+            },
+            "3": {
+                "category": "Portfolio Architecture",
+                "description": "Showcase minimaliste pour architectes.",
+                "problem": "Présenter des plans complexes de manière élégante et simple.",
+                "solution": "Interface minimaliste avec galeries plein écran fluides.",
+                "results": "Identité visuelle premium"
+            },
+            "4": {
+                "category": "Association",
+                "description": "Plateforme communautaire pour la jeunesse.",
+                "problem": "Centraliser les informations et les inscriptions.",
+                "solution": "Interface dynamique facilitant l'accès aux ressources.",
+                "results": "Gestion centralisée efficace"
+            }
+        }
+    },
+    "pricing": {
+        "badge": "Pricing",
+        "title": "Le Pack Adapté à vos Besoins",
+        "items": {
+            "focus": {
+                "name": "Pack Présence",
+                "tagline": "L'essentiel pour démarrer"
+            },
+            "momentum": {
+                "name": "Pack Croissance",
+                "tagline": "Accélérez votre business"
+            },
+            "apex": {
+                "name": "Pack Performance",
+                "tagline": "Solution complète"
+            }
+        }
+    },
+    "about": {
+        "badge": "Bruxelles • Studio Digital",
+        "title": "L'Équipe Webora",
+        "subtitle": "Nous créons des solutions digitales sur-mesure pour transformer votre présence en ligne.",
+        "p1": "Fondée par des entrepreneurs passionnés à Bruxelles, Webora est née d'un constat simple : les entreprises ont besoin d'outils digitaux performants pour réussir.",
+        "p2": "Notre mission est d'apporter notre expertise technique et créative à chaque projet. Nous construisons des sites web et des applications qui durent et qui génèrent de la croissance.",
+        "stats": {
+            "projects": "Projets",
+            "focus": "Qualité",
+            "base": "Base"
+        },
+        "quote": "L'excellence technique au service de votre vision.",
+        "signature": "L'Équipe Webora"
+    },
+    "footer": {
+        "expertises": "Expertises",
+        "agency": "L'Agence",
+        "explore": "Explorer",
+        "rights": "Tous droits réservés.",
+        "developed_by": "Conçu par",
+        "base": "Bruxelles",
+        "links": {
+            "web": "Sites Web",
+            "saas": "Applications SaaS",
+            "video": "Vidéo",
+            "ai": "IA & Stratégie",
+            "approach": "Méthode",
+            "studio": "L'Équipe",
+            "team": "L'Équipe",
+            "case_studies": "Portfolio",
+            "contact": "Contact",
+            "quote": "Devis gratuit"
+        }
+    }
+}

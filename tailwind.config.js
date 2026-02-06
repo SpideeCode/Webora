@@ -5,114 +5,65 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Palette principale plus sobre
+        // "Aura" Design System
         primary: {
-          50: '#f0f7ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          DEFAULT: '#050505', // Midnight Black
+          lighter: '#111111',
+          lightest: '#1a1a1a',
         },
-        // Gris plus chauds et élégants
-        neutral: {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-          950: '#0a0a0a',
+        accent: {
+          magenta: '#d946ef',
+          cyan: '#0ea5e9',
+          purple: '#8b5cf6',
         },
-        // Couleur de fond personnalisée
-        background: {
-          light: '#f8fafc',
-          dark: '#0a0a0a',
-        },
-        // Nouvelles couleurs pour les boutons
-        button: {
-          primary: {
-            from: '#1d4ed8',
-            to: '#3b82f6',
-            hover: {
-              from: '#1e40af',
-              to: '#2563eb',
-            }
-          },
-          secondary: {
-            bg: 'rgba(255, 255, 255, 0.9)',
-            text: '#1e40af',
-            hover: {
-              bg: 'rgba(255, 255, 255, 1)',
-              text: '#1e3a8a',
-            }
-          }
-        },
+        surface: {
+          50: 'rgba(255, 255, 255, 0.05)',
+          100: 'rgba(255, 255, 255, 0.1)',
+          200: 'rgba(255, 255, 255, 0.2)',
+        }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.05)',
-        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-      },
-      backdropBlur: {
-        xs: '2px',
-        sm: '4px',
-        md: '8px',
-        lg: '12px',
-        xl: '16px',
+        'glow-magenta': '0 0 20px rgba(217, 70, 239, 0.3)',
+        'glow-cyan': '0 0 20px rgba(14, 165, 233, 0.3)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-out',
-        'slide-up': 'slideUp 0.5s ease-out',
+        'reveal': 'reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
+        reveal: {
+          '0%': { transform: 'translateY(100%)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
       },
       backgroundImage: {
-        'glass': 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%)',
-        'glass-dark': 'linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%)',
+        'aura-gradient': 'radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.1) 0%, rgba(14, 165, 233, 0.05) 50%, rgba(5, 5, 5, 1) 100%)',
       },
     },
   },
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {
-        '.glass': {
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+        '.glass-morphism': {
+          background: 'rgba(255, 255, 255, 0.03)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
         },
-        '.glass-dark': {
-          background: 'rgba(0, 0, 0, 0.2)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+        '.text-gradient': {
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
         },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);

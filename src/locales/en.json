@@ -1,0 +1,216 @@
+{
+    "nav": {
+        "expertises": "Expertise",
+        "portfolio": "Portfolio",
+        "approach": "Approach",
+        "agency": "The Team",
+        "contact": "Contact",
+        "cta": "Get a Quote"
+    },
+    "hero": {
+        "badge": "Webora | Digital Studio",
+        "headline_1": "Level Up Your",
+        "headline_2": "Digital Presence",
+        "description": "We build high-performance digital solutions for companies aiming for excellence.",
+        "cta_primary": "Start My Project",
+        "cta_secondary": "Our Projects"
+    },
+    "methodology": {
+        "badge": "Our Process",
+        "title": "Our Method",
+        "steps": {
+            "step1_title": "Analysis",
+            "step1_desc": "Deep dive into your project to define a tailored strategy.",
+            "step2_title": "Design",
+            "step2_desc": "Creating a beautiful interface and an optimized user experience.",
+            "step3_title": "Development",
+            "step3_desc": "Robust technical build using the most reliable technologies.",
+            "step4_title": "Launch",
+            "step4_desc": "Going live and providing support to ensure your success."
+        }
+    },
+    "contact": {
+        "badge": "Contact",
+        "title": "Ready to start your project?",
+        "description": "Let's discuss your needs and build your online presence together.",
+        "labels": {
+            "name": "Full Name",
+            "email": "Email Address",
+            "type": "Project Type",
+            "budget": "Estimated Budget",
+            "message": "Project Details"
+        },
+        "placeholders": {
+            "name": "Your Name",
+            "email": "your@email.com",
+            "message": "Tell us about your goals..."
+        },
+        "submit": "Send Request",
+        "sending": "Sending...",
+        "success": "Message sent successfully",
+        "error": "An error occurred"
+    },
+    "services": {
+        "badge": "Our Expertise",
+        "title": "A blend of creativity and technical precision for your digital projects.",
+        "categories": {
+            "all": "All",
+            "web_saas": "Web & SaaS",
+            "content": "Content Production",
+            "strategy_ai": "Strategy & AI"
+        },
+        "items": {
+            "website": {
+                "title": "Performance Websites",
+                "description": "Fast showcase and e-commerce sites, designed for conversion and user experience.",
+                "features": [
+                    "Modern Design",
+                    "SEO Optimization",
+                    "Mobile Ready",
+                    "Secure Hosting"
+                ]
+            },
+            "saas": {
+                "title": "SaaS & Applications",
+                "description": "Development of complex business applications and custom platforms.",
+                "features": [
+                    "Scalable Architecture",
+                    "Complex Interfaces",
+                    "API Integration",
+                    "High Security"
+                ]
+            },
+            "video": {
+                "title": "Video Production",
+                "description": "High-quality video content to showcase your brand and products.",
+                "features": [
+                    "Storytelling",
+                    "4K Quality",
+                    "Dynamic Editing",
+                    "Multiple Formats"
+                ]
+            },
+            "photo": {
+                "title": "Pro Photography",
+                "description": "Photoshoots and visual content creation to elevate your identity.",
+                "features": [
+                    "Product Shoots",
+                    "Art Direction",
+                    "Pro Retouching",
+                    "Image Gallery"
+                ]
+            },
+            "ai": {
+                "title": "AI Integration",
+                "description": "Implementing AI tools to automate your processes and gain efficiency.",
+                "features": [
+                    "Smart Chatbots",
+                    "Automation",
+                    "Data Analysis",
+                    "AI Consulting"
+                ]
+            },
+            "strategy": {
+                "title": "Digital Strategy",
+                "description": "Complete support to develop your visibility and ROI.",
+                "features": [
+                    "Audit & Analysis",
+                    "Growth Hacking",
+                    "Online Ads",
+                    "SEO Strategy"
+                ]
+            }
+        }
+    },
+    "portfolio": {
+        "badge": "Portfolio",
+        "title": "Our Work",
+        "description": "Explore concrete projects we've successfully delivered.",
+        "cta": "View Site",
+        "challenge": "The Challenge",
+        "approach": "Our Solution",
+        "impact": "Impact",
+        "items": {
+            "1": {
+                "category": "SaaS Restaurant & 3D/AR Menu",
+                "description": "Complete digitization solution for the hospitality industry.",
+                "problem": "Improve order management and menu attractiveness.",
+                "solution": "SaaS platform with QR Code and Augmented Reality menus.",
+                "results": "+40% table turnover"
+            },
+            "2": {
+                "category": "Consumer Services",
+                "description": "Lead generation for energy brokers.",
+                "problem": "Convert visitors into qualified leads effectively.",
+                "solution": "Conversion-oriented design with optimized sales funnels.",
+                "results": "Conversion multiplied by 3"
+            },
+            "3": {
+                "category": "Architecture Portfolio",
+                "description": "Minimalist showcase for architects.",
+                "problem": "Present complex plans elegantly and simply.",
+                "solution": "Minimalist interface with fluid full-screen galleries.",
+                "results": "Premium visual identity"
+            },
+            "4": {
+                "category": "Association",
+                "description": "Community platform for youth engagement.",
+                "problem": "Centralize information and registrations.",
+                "solution": "Dynamic interface facilitating resource access.",
+                "results": "Efficient centralized management"
+            }
+        }
+    },
+    "pricing": {
+        "badge": "Pricing",
+        "title": "The Right Plan for Your Needs",
+        "items": {
+            "focus": {
+                "name": "Presence Pack",
+                "tagline": "Essentials to get started"
+            },
+            "momentum": {
+                "name": "Growth Pack",
+                "tagline": "Accelerate your business"
+            },
+            "apex": {
+                "name": "Performance Pack",
+                "tagline": "The complete solution"
+            }
+        }
+    },
+    "about": {
+        "badge": "Brussels • Digital Studio",
+        "title": "The Webora Team",
+        "subtitle": "We create custom digital solutions to transform your online presence.",
+        "p1": "Founded by passionate entrepreneurs in Brussels, Webora was born from a simple observation: companies need effective digital tools to succeed.",
+        "p2": "Our mission is to bring our technical and creative expertise to every project. We build websites and apps that last and generate growth.",
+        "stats": {
+            "projects": "Projects",
+            "focus": "Quality",
+            "base": "Base"
+        },
+        "quote": "Technical excellence at the service of your vision.",
+        "signature": "The Webora Team"
+    },
+    "footer": {
+        "expertises": "Expertise",
+        "agency": "The Agency",
+        "explore": "Explore",
+        "rights": "All rights reserved.",
+        "developed_by": "Designed by",
+        "base": "Brussels",
+        "links": {
+            "web": "Websites",
+            "saas": "SaaS Apps",
+            "video": "Video",
+            "ai": "AI & Strategy",
+            "approach": "Method",
+            "studio": "The Team",
+            "team": "The Team",
+            "case_studies": "Portfolio",
+            "contact": "Contact",
+            "quote": "Free Quote"
+        }
+    }
+}
