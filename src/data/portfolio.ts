@@ -11,38 +11,38 @@ export interface PortfolioItem {
 export const portfolio: PortfolioItem[] = [
     {
         id: 1,
-        title: 'Boulangerie Le Pétrin d\'Or',
-        category: 'Site web + Réseaux sociaux',
-        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80',
-        description: 'Refonte complète du site web et stratégie social media pour augmenter la visibilité locale.',
-        results: '+150% de trafic en 3 mois',
-        link: '#'
+        title: 'Tapzy',
+        category: 'SaaS Restaurant & Menu 3D/AR',
+        image: '/img/portfolio/tapzy.png',
+        description: 'Solution complète : commande et paiement à table via QR code, menu digital avec plats en 3D/AR, et gestion des commandes cuisine.',
+        results: 'Digitalisation & Expérience Client',
+        link: 'https://tapzy-landing.vercel.app'
     },
     {
         id: 2,
-        title: 'Salon de coiffure Élégance',
-        category: 'Vidéos publicitaires',
-        image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80',
-        description: 'Série de 5 vidéos promotionnelles pour Instagram et TikTok.',
-        results: '+300 nouveaux abonnés',
-        link: '#'
+        title: 'AKR Group',
+        category: 'Courtage en Charges Domestiques',
+        image: '/img/portfolio/akr-group.png',
+        description: 'Site web stratégique pour courtier, conçu spécifiquement pour la génération de leads qualifiés et l\'optimisation de la conversion.',
+        results: 'Génération de leads qualifiés',
+        link: 'https://akr-group.vercel.app'
     },
     {
         id: 3,
-        title: 'Restaurant Le Bistrot',
-        category: 'Pack complet',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
-        description: 'Site web avec réservation en ligne, gestion des réseaux sociaux et vidéos menu.',
-        results: '+200% de réservations en ligne',
-        link: '#'
+        title: 'ZArchitecture',
+        category: 'Portfolio Architecture',
+        image: '/img/portfolio/zarchitecture.png',
+        description: 'Portfolio numérique mettant en valeur les projets d\'étudiantes en Master Architecte. Design épuré laissant la place aux visuels.',
+        results: 'Mise en valeur visuelle',
+        link: 'https://www.zarchitecture.be'
     },
     {
         id: 4,
-        title: 'Boutique Mode & Style',
-        category: 'E-commerce',
-        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-        description: 'Création d\'une boutique en ligne moderne avec intégration paiement sécurisé.',
-        results: '€15k de ventes le 1er mois',
-        link: '#'
+        title: 'LMB Scouts 2025',
+        category: 'Association',
+        image: '/img/portfolio/scouts2025.png',
+        description: 'Plateforme officielle pour les Scouts Musulmans de Belgique (2025). Centralisation des informations et outils d\'engagement.',
+        results: 'Communication & Engagement',
+        link: 'https://scouts2025.vercel.app'
     }
 ];
