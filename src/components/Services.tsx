@@ -3,9 +3,11 @@ import { services } from '../data/services';
 import { useState } from 'react';
 import { ArrowUpRight, Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export default function Services() {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const categories = [
     { id: 'All', label: t('services.categories.all') },
@@ -21,21 +23,21 @@ export default function Services() {
     : services.filter(s => s.category === activeCategory);
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: isMobile ? 0 : 0.1 }
     }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }
+      transition: { duration: isMobile ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] as any }
     },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } }
+    exit: { opacity: 0, scale: 0.95, transition: { duration: isMobile ? 0 : 0.3 } }
   };
 
   return (
@@ -44,7 +46,7 @@ export default function Services() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           className="mb-20 text-center"
@@ -80,17 +82,17 @@ export default function Services() {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="popLayout" initial={!isMobile}>
             {filteredServices.map((service) => {
               const Icon = service.icon;
               const features = t(`services.items.${service.id}.features`, { returnObjects: true }) as string[];
 
               return (
                 <motion.div
-                  layout
+                  layout={!isMobile}
                   key={service.id}
                   variants={cardVariants}
-                  whileHover={{ y: -5 }}
+                  whileHover={isMobile ? {} : { y: -5 }}
                   className="group relative glass-card p-8 overflow-hidden h-full flex flex-col"
                 >
                   <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
@@ -126,4 +128,3 @@ export default function Services() {
     </section>
   );
 }
-

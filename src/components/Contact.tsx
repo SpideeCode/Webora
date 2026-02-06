@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Instagram, Linkedin, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Suspense, lazy } from "react";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const SmartFunnel = lazy(() => import("./SmartFunnel"));
 
@@ -13,35 +14,40 @@ const FunnelLoader = () => (
 
 export default function Contact() {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <section id="contact" className="py-32 bg-primary relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-magenta opacity-5 blur-[120px] rounded-full" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-cyan opacity-5 blur-[120px] rounded-full" />
+      {/* Background elements - Desktop Only */}
+      {!isMobile && (
+        <>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-magenta opacity-5 blur-[120px] rounded-full" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-cyan opacity-5 blur-[120px] rounded-full" />
+        </>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-magenta/10 border border-accent-magenta/20 mb-6 font-black text-[10px] text-accent-magenta uppercase tracking-[0.3em]"
           >
             {t('contact.badge')}
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: isMobile ? 0 : 0.1 }}
             className="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
           >
             {t('contact.title').split('?')[0]} <br />
             <span className="text-accent-cyan">PROJET ?</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: isMobile ? 0 : 0.2 }}
             className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
           >
             {t('contact.description')}
@@ -51,7 +57,7 @@ export default function Contact() {
         <div className="flex flex-col gap-12 max-w-5xl mx-auto">
           {/* Funnel Side - Now on TOP */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="p-1 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent order-1"
           >
@@ -64,9 +70,9 @@ export default function Contact() {
 
           {/* Info Side - Now at BOTTOM */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: isMobile ? 0 : 0.1 }}
             className="order-2"
           >
             <div className="p-8 md:p-10 rounded-[40px] glass-card flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">

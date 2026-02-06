@@ -10,6 +10,7 @@ import {
     CheckCircle
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 type ServiceType = 'WEB & APPS' | 'IA & AUTOMATISATION' | 'PRODUCTION VISUELLE' | 'CONTENT & POST-PROD' | null;
 
@@ -46,6 +47,7 @@ const detailOptions: Record<string, string[]> = {
 const budgetOptions = ['-500€', '500€ - 1000€', '1000€ - 2000€', '2000€+'];
 
 export default function SmartFunnel() {
+    const isMobile = useMediaQuery('(max-width: 768px)');
     const [currentStep, setCurrentStep] = useState(0);
     const [data, setData] = useState<FormData>({
         service: null,
@@ -107,7 +109,7 @@ export default function SmartFunnel() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto min-h-[500px] flex flex-col" style={{ transform: 'translateZ(0)' }}>
+        <div className="w-full max-w-4xl mx-auto min-h-[500px] flex flex-col" style={{ transform: !isMobile ? 'translateZ(0)' : 'none' }}>
             {/* Progress Bar */}
             <div className="flex justify-between mb-16 px-4 relative">
                 {/* Connecting Lines Background */}
@@ -116,7 +118,7 @@ export default function SmartFunnel() {
                 {steps.map((step, idx) => (
                     <div key={idx} className="flex flex-col items-center gap-3 group relative z-10 w-1/4">
                         <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 bg-primary ${idx <= currentStep
+                            className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 bg-primary ${idx <= currentStep
                                 ? 'border-accent-magenta text-white shadow-[0_0_20px_rgba(255,0,128,0.3)]'
                                 : 'border-white/10 text-gray-600'
                                 }`}
@@ -133,7 +135,7 @@ export default function SmartFunnel() {
 
                         {/* Active Line Overlay */}
                         {idx < steps.length - 1 && (
-                            <div className={`absolute left-[60%] w-[80%] h-[2px] top-5 -z-10 transition-all duration-700 hidden sm:block ${idx < currentStep ? 'bg-accent-magenta shadow-[0_0_10px_rgba(255,0,128,0.5)]' : 'bg-transparent'
+                            <div className={`absolute left-[60%] w-[80%] h-[2px] top-5 -z-10 transition-all duration-300 hidden sm:block ${idx < currentStep ? 'bg-accent-magenta shadow-[0_0_10px_rgba(255,0,128,0.5)]' : 'bg-transparent'
                                 }`} />
                         )}
                     </div>
@@ -141,14 +143,14 @@ export default function SmartFunnel() {
             </div>
 
             <div className="flex-grow mt-8 relative">
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" initial={!isMobile}>
                     {!isSuccess ? (
                         <motion.div
                             key={currentStep}
-                            initial={{ opacity: 0, x: 20 }}
+                            initial={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            exit={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : -20 }}
+                            transition={{ duration: isMobile ? 0 : 0.3, ease: "easeOut" }}
                             className="py-4"
                         >
                             {currentStep === 0 && (

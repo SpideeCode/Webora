@@ -3,9 +3,11 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export default function Navbar() {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,15 +21,25 @@ export default function Navbar() {
 
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
-    setTimeout(() => {
+    if (isMobile) {
       const element = document.getElementById(id);
       if (element) {
         window.scrollTo({
-          top: element.offsetTop - 80,
-          behavior: 'smooth'
+          top: element.offsetTop - 20,
+          behavior: 'auto'
         });
       }
-    }, 300);
+    } else {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    }
   };
 
   const navLinks = [
@@ -38,11 +50,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${!isMobile ? 'transition-all duration-500' : ''} ${isScrolled
       ? 'py-4 px-4 md:px-8'
       : 'py-6 px-4 md:px-8'
       }`}>
-      <div className={`max-w-7xl mx-auto transition-all duration-500 rounded-full px-6 py-3 ${isScrolled ? 'glass-morphism shadow-glass' : 'bg-transparent'
+      <div className={`max-w-7xl mx-auto rounded-full px-6 py-3 ${!isMobile ? 'transition-all duration-500' : ''} ${isScrolled ? 'glass-morphism shadow-glass' : 'bg-transparent'
         }`}>
         <div className="flex justify-between items-center">
           <button
@@ -100,10 +112,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
+            initial={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : '100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            exit={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : '100%' }}
+            transition={isMobile ? { duration: 0 } : { type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-[100] bg-primary/98 backdrop-blur-2xl pt-24 px-8 flex flex-col"
           >
             <div className="flex justify-end mb-8">
@@ -138,4 +150,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

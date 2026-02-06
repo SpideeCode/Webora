@@ -2,15 +2,17 @@ import { motion } from 'framer-motion';
 import { portfolio } from '../data/portfolio';
 import { ExternalLink, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export default function Portfolio() {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <section id="realisations" className="py-32 bg-primary relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-24"
@@ -27,18 +29,18 @@ export default function Portfolio() {
           {portfolio.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 100 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-20 items-center`}
+              viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
+              transition={{ duration: isMobile ? 0 : 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-20 items-center`}
             >
               {/* Image / 3D Mockup Side */}
               <div className="flex-1 w-full group cursor-pointer perspective-1000">
                 <motion.div
-                  whileHover={{ rotateY: index % 2 === 0 ? 5 : -5, rotateX: 2, scale: 1.02 }}
-                  className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 ease-out"
-                  style={{ transform: 'translateZ(0)' }}
+                  whileHover={isMobile ? {} : { rotateY: index % 2 === 0 ? 5 : -5, rotateX: 2, scale: 1.02 }}
+                  className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl"
+                  style={{ transform: !isMobile ? 'translateZ(0)' : 'none' }}
                 >
                   <img
                     src={project.image}
@@ -112,7 +114,7 @@ export default function Portfolio() {
                 <div className="pt-4">
                   <a
                     href={project.link}
-                    className="inline-flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest border-b-2 border-accent-magenta pb-2 hover:gap-4 transition-all"
+                    className="inline-flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest border-b-2 border-accent-magenta pb-2 transition-all"
                   >
                     {t('portfolio.cta')} <ExternalLink className="w-4 h-4" />
                   </a>
@@ -123,9 +125,8 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Background Decorative Element */}
-      <div className="absolute top-1/2 left-0 w-full h-full bg-aura-gradient opacity-20 -z-0 pointer-events-none" />
+      {/* Background Decorative Element - Desktop Only */}
+      {!isMobile && <div className="absolute top-1/2 left-0 w-full h-full bg-aura-gradient opacity-20 -z-0 pointer-events-none" />}
     </section>
   );
 }
-

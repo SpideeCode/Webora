@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export default function Methodology() {
     const { t } = useTranslation();
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     const steps = [
         {
@@ -36,7 +38,7 @@ export default function Methodology() {
         <section id="methodology" className="py-32 bg-primary relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-24"
@@ -59,17 +61,17 @@ export default function Methodology() {
                         return (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 50 }}
+                                initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : index * 0.1 }}
                                 className="relative z-10 text-center group"
                             >
                                 <div className="relative mb-8 inline-block">
-                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center border border-white/10 glass-morphism transition-all duration-500 group-hover:scale-110 group-hover:border-accent-magenta/50 group-hover:shadow-[0_0_30px_rgba(255,0,128,0.2)] relative z-10 bg-primary`}>
-                                        <Icon className="w-6 h-6 text-white group-hover:text-accent-magenta transition-colors" />
+                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center border border-white/10 glass-morphism transition-all ${!isMobile ? 'group-hover:scale-110 group-hover:border-accent-magenta/50 group-hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]' : ''} relative z-10 bg-primary`}>
+                                        <Icon className={`w-6 h-6 text-white ${!isMobile ? 'group-hover:text-accent-magenta' : ''} transition-colors`} />
                                     </div>
-                                    <div className="absolute -inset-2 bg-accent-magenta/5 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    {!isMobile && <div className="absolute -inset-2 bg-accent-magenta/5 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />}
                                 </div>
 
                                 <h3 className="text-xl font-black text-white mb-4 uppercase tracking-[0.2em]">{step.title}</h3>
