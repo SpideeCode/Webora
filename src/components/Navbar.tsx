@@ -99,11 +99,20 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[-1] bg-primary pt-24 px-8"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[100] bg-primary/98 backdrop-blur-2xl pt-24 px-8 flex flex-col"
           >
+            <div className="flex justify-end mb-8">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 text-white"
+              >
+                <X size={32} />
+              </button>
+            </div>
             <div className="flex flex-col gap-8">
               {navLinks.map((link) => (
                 <button

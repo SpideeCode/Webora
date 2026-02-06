@@ -19,9 +19,6 @@
   body {
     font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
     @apply antialiased text-gray-200 min-h-screen bg-[#050505] overflow-x-hidden;
-    background-image:
-      radial-gradient(circle at 20% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
   }
 
   ::selection {
@@ -48,10 +45,10 @@
 }
 
 .grid-gradient-bg {
-  background-size: 60px 60px;
+  background-size: 80px 80px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 @layer components {

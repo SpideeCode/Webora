@@ -56,8 +56,8 @@ export default {
       const newUtilities = {
         '.glass-morphism': {
           background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           border: '1px solid rgba(255, 255, 255, 0.08)',
         },
         '.text-gradient': {

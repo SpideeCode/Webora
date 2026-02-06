@@ -24,7 +24,7 @@ const PageLoader = () => (
 function App() {
   return (
     <LazyMotion features={domAnimation} strict>
-      <div className="min-h-screen bg-primary relative overflow-hidden grid-gradient-bg">
+      <div className="min-h-screen bg-primary relative overflow-hidden">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={

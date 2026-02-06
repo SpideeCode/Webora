@@ -19,18 +19,18 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } as any
     },
   };
 
@@ -40,7 +40,6 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-accent-magenta/10 rounded-full blur-[120px] animate-pulse-slow" />
         <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-accent-cyan/10 rounded-full blur-[150px] animation-delay-2000 animate-pulse-slow" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-150 brightness-100 mix-blend-overlay" />
       </div>
 
       <motion.div
