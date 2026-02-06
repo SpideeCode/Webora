@@ -38,8 +38,8 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary px-4">
       {/* Dynamic Background Aura */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-accent-magenta/10 rounded-full blur-[120px] animate-pulse-slow" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-accent-cyan/10 rounded-full blur-[150px] animation-delay-2000 animate-pulse-slow" />
+        <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-accent-magenta/5 rounded-full blur-[60px]" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-accent-cyan/5 rounded-full blur-[80px]" />
       </div>
 
       <motion.div

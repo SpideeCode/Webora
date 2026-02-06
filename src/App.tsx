@@ -2,9 +2,10 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LazyMotion, domAnimation } from 'framer-motion';
 
-// Lazy load components
-const Navbar = lazy(() => import('./components/Navbar'));
-const Hero = lazy(() => import('./components/Hero'));
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+
+// Lazy load non-critical components
 const Services = lazy(() => import('./components/Services'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const Methodology = lazy(() => import('./components/Methodology'));
