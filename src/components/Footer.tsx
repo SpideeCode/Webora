@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
-  const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -109,8 +108,13 @@ export default function Footer() {
         <div className="relative">
           <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
           <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">
-              &copy; {currentYear} {i18n.language === 'fr' ? 'Développé par' : t('footer.developed_by')} <a href="https://www.webora-da.be/" className="text-accent-magenta hover:underline">webora</a>
+            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-[10px] text-gray-500 font-bold leading-relaxed uppercase tracking-widest italic">
+                {t('footer.developed_by')} <a href="https://webora-da.be" target="_blank" className="text-white hover:text-accent-magenta transition-colors">webora-da.be</a>
+              </p>
+              <a href="/admin/dashboard" className="text-[10px] text-gray-700 hover:text-white transition-colors uppercase font-black tracking-widest">
+                Accès Admin
+              </a>
             </div>
 
             <div className="flex gap-8">

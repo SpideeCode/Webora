@@ -78,7 +78,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           <AnimatePresence mode="popLayout">
             {filteredServices.map((service) => {
@@ -90,8 +90,8 @@ export default function Services() {
                   layout
                   key={service.id}
                   variants={cardVariants}
-                  whileHover={{ y: -10 }}
-                  className="group relative glass-morphism p-8 rounded-[32px] overflow-hidden border border-white/5 flex flex-col h-full"
+                  whileHover={{ y: -5 }}
+                  className="group relative glass-card p-8 overflow-hidden h-full flex flex-col"
                 >
                   <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
                     <ArrowUpRight className="text-white w-6 h-6" />

@@ -1,232 +1,107 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Send, CheckCircle, XCircle, MapPin, Instagram, Linkedin } from "lucide-react";
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Instagram, Linkedin, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import SmartFunnel from "./SmartFunnel";
 
 export default function Contact() {
-  const { t, i18n } = useTranslation();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    projectType: "Website",
-    budget: "1k-5k",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<"success" | "error" | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus(null);
-
-    emailjs
-      .send(
-        "service_q2wzt76",
-        "template_pa1epp7",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          project_type: formData.projectType,
-          budget: formData.budget,
-          message: formData.message,
-        },
-        "rzjWjtVn3uyjGFJwm"
-      )
-      .then(
-        () => {
-          setStatus("success");
-          setFormData({ name: "", email: "", projectType: "Website", budget: "1k-5k", message: "" });
-        },
-        (error) => {
-          console.error("Erreur EmailJS:", error);
-          setStatus("error");
-        }
-      )
-      .finally(() => setLoading(false));
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { t } = useTranslation();
 
   return (
     <section id="contact" className="py-32 bg-primary relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-cyan/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Background elements */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-magenta opacity-5 blur-[120px] rounded-full" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-cyan opacity-5 blur-[120px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-
-          {/* Left Side: Info & CTA */}
+        <div className="text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-magenta/10 border border-accent-magenta/20 mb-6 font-black text-[10px] text-accent-magenta uppercase tracking-[0.3em]"
           >
-            <span className="text-accent-cyan font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">
-              {t('contact.badge')}
-            </span>
-            <h2 className="text-4xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-none">
-              {t('contact.title', { interpolation: { escapeValue: false } }).split('?')[0]} <br />
-              <span className="text-accent-magenta">{t('contact.title').includes('?') ? 'Ignition ?' : 'Ignition'}</span>
-            </h2>
-            <p className="text-gray-400 text-lg mb-12 max-w-md">
-              {t('contact.description')}
-            </p>
+            {t('contact.badge')}
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
+          >
+            {t('contact.title').split('?')[0]} <br />
+            <span className="text-accent-cyan">PROJET ?</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
+          >
+            {t('contact.description')}
+          </motion.p>
+        </div>
 
-            <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center border border-white/5 group-hover:border-accent-cyan/30 transition-all">
-                  <Mail className="text-white w-5 h-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Transmission</span>
-                  <a href="mailto:contact.weboraagency@gmail.com" className="text-white font-bold hover:text-accent-cyan transition-colors">contact.weboraagency@gmail.com</a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center border border-white/5 group-hover:border-accent-cyan/30 transition-all">
-                  <MapPin className="text-white w-5 h-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Base</span>
-                  <span className="text-white font-bold">Bruxelles, Belgique</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4 mt-12">
-              <a href="#" className="w-10 h-10 glass-morphism rounded-xl flex items-center justify-center border border-white/5 hover:bg-white/10 transition-all">
-                <Linkedin className="text-white w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 glass-morphism rounded-xl flex items-center justify-center border border-white/5 hover:bg-white/10 transition-all">
-                <Instagram className="text-white w-4 h-4" />
-              </a>
+        <div className="flex flex-col gap-12 max-w-5xl mx-auto">
+          {/* Funnel Side - Now on TOP */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="p-1 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent order-1"
+          >
+            <div className="bg-primary p-6 md:p-12 rounded-[39px] glass-card">
+              <SmartFunnel />
             </div>
           </motion.div>
 
-          {/* Right Side: Form */}
+          {/* Info Side - Now at BOTTOM */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="p-8 md:p-12 glass-morphism rounded-[48px] border border-white/10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="order-2"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-4">{t('contact.labels.name')}</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder={t('contact.placeholders.name')}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent-magenta/50 transition-all"
-                  />
+            <div className="p-8 md:p-10 rounded-[40px] glass-card flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+              <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+                <div>
+                  <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-4 opacity-30">Canal Direct</h4>
+                  <a href="mailto:contact.weboraagency@gmail.com" className="group flex items-center gap-4 text-gray-300 hover:text-white transition-all justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-accent-magenta/20 group-hover:text-accent-magenta transition-all">
+                      <Mail size={18} />
+                    </div>
+                    <span className="text-sm font-bold tracking-tight">contact.weboraagency@gmail.com</span>
+                  </a>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-4">{t('contact.labels.email')}</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder={t('contact.placeholders.email')}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent-magenta/50 transition-all"
-                  />
+
+                <div>
+                  <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-4 opacity-30">Siège</h4>
+                  <div className="flex items-center gap-4 text-gray-300 justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                      <MapPin size={18} />
+                    </div>
+                    <span className="text-sm font-bold tracking-tight">Bruxelles, Belgique</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-4">{t('contact.labels.type')}</label>
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-accent-magenta/50 transition-all appearance-none"
-                  >
-                    <option value="Website" className="bg-primary">{i18n.language === 'fr' ? 'Site Web Premium' : 'Premium Website'}</option>
-                    <option value="SaaS" className="bg-primary">{i18n.language === 'fr' ? 'Application SaaS' : 'SaaS Application'}</option>
-                    <option value="Video" className="bg-primary">{i18n.language === 'fr' ? 'Production Vidéo' : 'Video Production'}</option>
-                    <option value="AI" className="bg-primary">{i18n.language === 'fr' ? 'Intégration IA' : 'AI Integration'}</option>
-                  </select>
+              <div className="flex flex-col items-center md:items-end gap-6">
+                <div className="flex gap-4">
+                  <a href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-accent-magenta hover:scale-110 transition-all border border-white/5">
+                    <Instagram size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-accent-cyan hover:scale-110 transition-all border border-white/5">
+                    <Linkedin size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-white/10 hover:scale-110 transition-all border border-white/5">
+                    <Globe size={18} />
+                  </a>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-4">{t('contact.labels.budget')}</label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-accent-magenta/50 transition-all appearance-none"
-                  >
-                    <option value="1k-3k" className="bg-primary">1,000€ - 3,000€</option>
-                    <option value="3k-10k" className="bg-primary">3,000€ - 10,000€</option>
-                    <option value="10k+" className="bg-primary">10,000€ +</option>
-                  </select>
-                </div>
+                <p className="text-[9px] text-gray-600 font-black uppercase tracking-[0.2em] italic max-w-[200px] leading-relaxed">
+                  "Nous forgeons des empires digitaux."
+                </p>
               </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-4">{t('contact.labels.message')}</label>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder={t('contact.placeholders.message')}
-                  className="w-full bg-white/5 border border-white/10 rounded-[32px] px-6 py-6 text-white placeholder:text-gray-600 focus:outline-none focus:border-accent-magenta/50 transition-all resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-3 py-6 bg-white text-black rounded-[32px] font-black uppercase tracking-[0.3em] text-xs hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
-              >
-                {loading ? t('contact.sending') : (
-                  <>{t('contact.submit')} <Send className="w-4 h-4" /></>
-                )}
-              </button>
-
-              <AnimatePresence>
-                {status === "success" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center gap-3"
-                  >
-                    <CheckCircle className="text-emerald-500 w-5 h-5 flex-shrink-0" />
-                    <span className="text-emerald-500 text-xs font-bold uppercase tracking-widest text-center w-full">{t('contact.success')}</span>
-                  </motion.div>
-                )}
-                {status === "error" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3"
-                  >
-                    <XCircle className="text-red-500 w-5 h-5 flex-shrink-0" />
-                    <span className="text-red-500 text-xs font-bold uppercase tracking-widest text-center w-full">{t('contact.error')}</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </form>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
-
