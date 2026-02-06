@@ -9,16 +9,20 @@ import Hero from './components/Hero';
 const Services = lazy(() => import('./components/Services'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const Methodology = lazy(() => import('./components/Methodology'));
-const About = lazy(() => import('./components/About'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const Login = lazy(() => import('./components/admin/Login'));
 const Dashboard = lazy(() => import('./components/admin/Dashboard'));
 
-// Initial loading fallback
 const PageLoader = () => (
   <div className="fixed inset-0 bg-primary z-[999] flex items-center justify-center">
     <div className="w-12 h-12 border-2 border-accent-magenta border-t-transparent rounded-full animate-spin" />
+  </div>
+);
+
+const SectionLoader = () => (
+  <div className="w-full py-20 flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-accent-magenta border-t-transparent rounded-full animate-spin" />
   </div>
 );
 
@@ -26,27 +30,34 @@ function App() {
   return (
     <LazyMotion features={domAnimation} strict>
       <div className="min-h-screen bg-primary relative overflow-hidden">
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Navbar />
-                <main className="w-full relative z-10">
-                  <Hero />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <main className="w-full relative z-10">
+                <Hero />
+                <Suspense fallback={<SectionLoader />}>
                   <Services />
                   <Portfolio />
-                  <About />
                   <Methodology />
                   <Contact />
-                </main>
-                <Footer />
-              </>
-            } />
-            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-            <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
-          </Routes>
-        </Suspense>
+                  <Footer />
+                </Suspense>
+              </main>
+            </>
+          } />
+          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+          <Route path="/admin/login" element={
+            <Suspense fallback={<PageLoader />}>
+              <Login />
+            </Suspense>
+          } />
+          <Route path="/admin/dashboard" element={
+            <Suspense fallback={<PageLoader />}>
+              <Dashboard />
+            </Suspense>
+          } />
+        </Routes>
       </div>
     </LazyMotion>
   );

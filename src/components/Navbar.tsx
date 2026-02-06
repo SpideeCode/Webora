@@ -34,7 +34,6 @@ export default function Navbar() {
     { id: 'services', label: t('nav.expertises') },
     { id: 'realisations', label: t('nav.portfolio') },
     { id: 'methodology', label: t('nav.approach') },
-    { id: 'apropos', label: t('nav.agency') },
     { id: 'contact', label: t('nav.contact') }
   ];
 

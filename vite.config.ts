@@ -10,12 +10,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react-core': ['react', 'react-dom'],
-          'vendor-router': ['react-router-dom'],
-          'vendor-supabase': ['@supabase/supabase-js'],
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
-          'vendor-framer': ['framer-motion'],
-          'vendor-icons': ['lucide-react'],
+          'vendor-supabase': ['@supabase/supabase-js'],
+          'vendor-ui': ['framer-motion', 'lucide-react'],
         },
       },
     },

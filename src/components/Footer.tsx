@@ -18,7 +18,6 @@ export default function Footer() {
     agence: [
       { name: t('footer.links.approach'), href: '#methodology' },
       { name: t('footer.links.case_studies'), href: '#realisations' },
-      { name: t('footer.links.studio'), href: '#apropos' },
       { name: t('footer.links.contact'), href: '#contact' },
     ],
     contact: [
@@ -36,6 +35,8 @@ export default function Footer() {
               <img
                 src="/img/logo-transparent-svg.svg"
                 alt="Webora"
+                width="32"
+                height="32"
                 className="h-8 w-auto brightness-200"
               />
               <span className="text-2xl font-black text-white tracking-widest uppercase">Webora</span>

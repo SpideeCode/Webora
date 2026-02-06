@@ -84,4 +84,9 @@
   .bg-glow-cyan {
     @apply relative after:absolute after:inset-0 after:bg-accent-cyan/20 after:blur-[100px] after:-z-10;
   }
+
+  section:not(#hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+  }
 }

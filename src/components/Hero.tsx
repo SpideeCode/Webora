@@ -15,27 +15,27 @@ export default function Hero() {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 1, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } as any
+      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } as any
     },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary px-4">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary px-4">
       {/* Dynamic Background Aura */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-accent-magenta/5 rounded-full blur-[60px]" />
