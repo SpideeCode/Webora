@@ -53,6 +53,8 @@ export default function Navbar() {
             <img
               src="/img/logo-transparent-svg.svg"
               alt="Webora"
+              width="32"
+              height="32"
               className="h-8 w-auto brightness-200"
             />
             <span className="text-xl font-black text-white tracking-widest uppercase">
