@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import ThemeToggle from './ThemeToggle';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export default function Navbar() {
@@ -66,9 +67,9 @@ export default function Navbar() {
               alt="Webora"
               width="32"
               height="32"
-              className="h-8 w-auto brightness-200"
+              className="h-8 w-auto dark:brightness-200 brightness-0"
             />
-            <span className="text-xl font-black text-white tracking-widest uppercase">
+            <span className="text-xl font-black text-foreground tracking-widest uppercase">
               Webora
             </span>
           </button>
@@ -79,16 +80,17 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 hover:text-white transition-colors"
+                className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-foreground transition-colors"
               >
                 {link.label}
               </button>
             ))}
-            <div className="flex items-center gap-4 border-l border-white/10 pl-8">
+            <div className="flex items-center gap-4 border-l border-white/10 dark:border-white/10 border-black/10 pl-8">
+              <ThemeToggle />
               <LanguageSwitcher />
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-6 py-2 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all"
+                className="px-6 py-2 dark:bg-white dark:text-black bg-black text-white text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all"
               >
                 {t('nav.cta')}
               </button>
@@ -96,11 +98,12 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Hamburguer */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-white focus:outline-none"
+              className="p-2 text-foreground focus:outline-none"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -111,17 +114,17 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : '100%' }}
             transition={isMobile ? { duration: 0 } : { type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] bg-primary/98 backdrop-blur-2xl pt-24 px-8 flex flex-col"
+            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-2xl pt-24 px-8 flex flex-col"
           >
             <div className="flex justify-end mb-8">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-white"
+                className="p-2 text-foreground"
               >
                 <X size={32} />
               </button>
@@ -131,20 +134,20 @@ export default function Navbar() {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-3xl font-black text-white hover:text-accent-magenta transition-colors text-left"
+                  className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left"
                 >
                   {link.label}
                 </button>
               ))}
-              <div className="h-[1px] w-full bg-white/10 my-4" />
+              <div className="h-[1px] w-full bg-foreground/10 my-4" />
               <button
                 onClick={() => scrollToSection('contact')}
-                className="w-full py-5 bg-white text-black font-black uppercase tracking-widest rounded-2xl"
+                className="w-full py-5 dark:bg-white dark:text-black bg-black text-white font-black uppercase tracking-widest rounded-2xl"
               >
                 {t('nav.cta')}
               </button>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </nav>

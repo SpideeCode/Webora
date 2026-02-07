@@ -5,15 +5,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        // "Aura" Design System
-        primary: {
-          DEFAULT: '#050505', // Midnight Black
-          lighter: '#111111',
-          lightest: '#1a1a1a',
-        },
+        primary: 'var(--primary)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        'text-secondary': 'var(--text-secondary)',
         accent: {
-          magenta: '#d946ef',
-          cyan: '#0ea5e9',
+          magenta: 'var(--accent-magenta)',
+          cyan: 'var(--accent-cyan)',
           purple: '#8b5cf6',
         },
         surface: {
@@ -47,7 +45,7 @@ export default {
         },
       },
       backgroundImage: {
-        'aura-gradient': 'radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.1) 0%, rgba(14, 165, 233, 0.05) 50%, rgba(5, 5, 5, 1) 100%)',
+        'aura-gradient': 'radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.1) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 100%)',
       },
     },
   },
@@ -55,8 +53,9 @@ export default {
     function ({ addUtilities }) {
       const newUtilities = {
         '.glass-morphism': {
-          background: 'rgba(15, 15, 15, 0.8)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'var(--glass-bg)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid var(--glass-border)',
         },
         '.text-gradient': {
           backgroundClip: 'text',

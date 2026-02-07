@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { services } from '../data/services';
 import { useState } from 'react';
 import { ArrowUpRight, Plus } from 'lucide-react';
@@ -41,23 +41,23 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-24 bg-primary relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <section id="services" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           className="mb-20 text-center"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-black text-foreground mb-6">
             {t('services.badge')}
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             {t('services.title')}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Filtering */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
@@ -66,8 +66,8 @@ export default function Services() {
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all border ${activeCategory === cat.id
-                ? 'bg-white text-black border-white'
-                : 'text-gray-500 border-white/10 hover:border-white/30'
+                ? 'dark:bg-white dark:text-black bg-black text-white border-foreground'
+                : 'text-text-secondary border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30'
                 }`}
             >
               {cat.label}
@@ -75,7 +75,7 @@ export default function Services() {
           ))}
         </div>
 
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -88,7 +88,7 @@ export default function Services() {
               const features = t(`services.items.${service.id}.features`, { returnObjects: true }) as string[];
 
               return (
-                <motion.div
+                <m.div
                   layout={!isMobile}
                   key={service.id}
                   variants={cardVariants}
@@ -96,34 +96,34 @@ export default function Services() {
                   className="group relative glass-card p-8 overflow-hidden h-full flex flex-col"
                 >
                   <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="text-white w-6 h-6" />
+                    <ArrowUpRight className="text-foreground w-6 h-6" />
                   </div>
 
-                  <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent-magenta/20 transition-colors">
-                    <Icon className="w-7 h-7 text-white group-hover:text-accent-magenta transition-colors" />
+                  <div className="w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent-magenta/20 transition-colors">
+                    <Icon className="w-7 h-7 text-foreground group-hover:text-accent-magenta transition-colors" />
                   </div>
 
-                  <h3 className="text-2xl font-black text-white mb-4 group-hover:text-accent-magenta transition-colors">
+                  <h3 className="text-2xl font-black text-foreground mb-4 group-hover:text-accent-magenta transition-colors">
                     {t(`services.items.${service.id}.title`)}
                   </h3>
 
-                  <p className="text-gray-400 text-sm leading-relaxed mb-8 mb-auto">
+                  <p className="text-text-secondary text-sm leading-relaxed mb-8 mb-auto">
                     {t(`services.items.${service.id}.description`)}
                   </p>
 
-                  <div className="pt-6 border-t border-white/5 space-y-3">
+                  <div className="pt-6 border-t border-foreground/5 space-y-3">
                     {Array.isArray(features) && features.map((f, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <Plus className="w-3 h-3 text-accent-cyan" />
-                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">{f}</span>
+                        <span className="text-[11px] font-bold text-text-secondary uppercase tracking-widest">{f}</span>
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

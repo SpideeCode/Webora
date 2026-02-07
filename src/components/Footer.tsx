@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary pt-32 pb-12 relative overflow-hidden">
+    <footer className="bg-background pt-32 pb-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="lg:col-span-1">
@@ -37,11 +37,11 @@ export default function Footer() {
                 alt="Webora"
                 width="32"
                 height="32"
-                className="h-8 w-auto brightness-200"
+                className="h-8 w-auto dark:brightness-200 brightness-0"
               />
-              <span className="text-2xl font-black text-white tracking-widest uppercase">Webora</span>
+              <span className="text-2xl font-black text-foreground tracking-widest uppercase">Webora</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-8">
+            <p className="text-text-secondary text-sm leading-relaxed max-w-xs mb-8">
               {t('hero.description')}
             </p>
             <div className="flex gap-4">
@@ -55,20 +55,20 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-morphism rounded-xl flex items-center justify-center border border-white/5 hover:border-accent-magenta/50 hover:bg-white/5 transition-all group"
+                  className="w-10 h-10 glass-morphism rounded-xl flex items-center justify-center border border-foreground/5 hover:border-accent-magenta/50 hover:bg-foreground/5 transition-all group"
                 >
-                  <social.icon className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                  <social.icon className="w-4 h-4 text-text-secondary group-hover:text-foreground transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.expertises')}</h4>
+            <h4 className="text-foreground font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.expertises')}</h4>
             <ul className="space-y-4">
               {footerLinks.expertises.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-gray-500 hover:text-white text-sm transition-colors font-medium">
+                  <a href={link.href} className="text-text-secondary hover:text-foreground text-sm transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -77,11 +77,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.agency')}</h4>
+            <h4 className="text-foreground font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.agency')}</h4>
             <ul className="space-y-4">
               {footerLinks.agence.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-gray-500 hover:text-white text-sm transition-colors font-medium">
+                  <a href={link.href} className="text-text-secondary hover:text-foreground text-sm transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -90,14 +90,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.base')}</h4>
+            <h4 className="text-foreground font-black uppercase tracking-[0.2em] text-xs mb-8">{t('footer.base')}</h4>
             <ul className="space-y-6">
               {footerLinks.contact.map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
-                  <div className="w-8 h-8 glass-morphism rounded-lg flex items-center justify-center border border-white/5">
+                  <div className="w-8 h-8 glass-morphism rounded-lg flex items-center justify-center border border-foreground/5">
                     <item.icon className="w-3 h-3 text-accent-cyan" />
                   </div>
-                  <a href={item.href} className="text-gray-500 hover:text-white text-sm transition-colors font-medium leading-tight">
+                  <a href={item.href} className="text-text-secondary hover:text-foreground text-sm transition-colors font-medium leading-tight">
                     {item.text}
                   </a>
                 </li>
@@ -107,20 +107,20 @@ export default function Footer() {
         </div>
 
         <div className="relative">
-          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-foreground/5 to-transparent" />
           <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-[10px] text-gray-500 font-bold leading-relaxed uppercase tracking-widest italic">
-                {t('footer.developed_by')} <a href="https://webora-da.be" target="_blank" className="text-white hover:text-accent-magenta transition-colors">webora-da.be</a>
+            <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-[10px] text-text-secondary font-bold leading-relaxed uppercase tracking-widest italic">
+                {t('footer.developed_by')} <a href="https://webora-da.be" target="_blank" className="text-foreground hover:text-accent-magenta transition-colors">webora-da.be</a>
               </p>
-              <a href="/admin/dashboard" className="text-[10px] text-gray-700 hover:text-white transition-colors uppercase font-black tracking-widest">
+              <a href="/admin/dashboard" className="text-[10px] text-text-secondary hover:text-foreground transition-colors uppercase font-black tracking-widest">
                 Accès Admin
               </a>
             </div>
 
             <div className="flex gap-8">
               {['Confidentialité', 'Mentions Légales', 'Cookies'].map((text, i) => (
-                <a key={i} href="#" className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 hover:text-white transition-colors">
+                <a key={i} href="#" className="text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary hover:text-foreground transition-colors">
                   {text === 'Confidentialité' && i18n.language === 'en' ? 'Privacy' : text}
                 </a>
               ))}
@@ -128,7 +128,7 @@ export default function Footer() {
 
             <button
               onClick={scrollToTop}
-              className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-white hover:text-accent-cyan transition-colors"
+              className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-foreground hover:text-accent-cyan transition-colors"
             >
               {i18n.language === 'fr' ? 'Retour au sommet' : 'Back to top'} <ArrowUp className="w-3 h-3 group-hover:-translate-y-1 transition-transform" />
             </button>

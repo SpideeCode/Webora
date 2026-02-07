@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { portfolio } from '../data/portfolio';
 import { ExternalLink, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -9,25 +9,25 @@ export default function Portfolio() {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
-    <section id="realisations" className="py-32 bg-primary relative overflow-hidden">
+    <section id="realisations" className="py-32 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
+        <m.div
           initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase">
+          <h2 className="text-4xl md:text-7xl font-black text-foreground mb-6 tracking-tighter uppercase">
             {t('portfolio.title')}
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
             {t('portfolio.description')}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="space-y-32">
           {portfolio.map((project, index) => (
-            <motion.div
+            <m.div
               key={project.id}
               initial={{ opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 100 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -37,9 +37,9 @@ export default function Portfolio() {
             >
               {/* Image / 3D Mockup Side */}
               <div className="flex-1 w-full group cursor-pointer perspective-1000">
-                <motion.div
+                <m.div
                   whileHover={isMobile ? {} : { rotateY: index % 2 === 0 ? 5 : -5, rotateX: 2, scale: 1.02 }}
-                  className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl"
+                  className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl"
                   style={{ transform: !isMobile ? 'translateZ(0)' : 'none' }}
                 >
                   <img
@@ -51,7 +51,7 @@ export default function Portfolio() {
                     decoding="async"
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t dark:from-background from-background via-transparent to-transparent opacity-60" />
 
                   {/* Overlay Link */}
                   <a
@@ -60,9 +60,9 @@ export default function Portfolio() {
                     rel="noopener noreferrer"
                     className="absolute top-6 right-6 w-14 h-14 glass-morphism rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0"
                   >
-                    <ExternalLink className="text-white w-6 h-6" />
+                    <ExternalLink className="text-foreground w-6 h-6" />
                   </a>
-                </motion.div>
+                </m.div>
               </div>
 
               {/* Narrative Side */}
@@ -71,7 +71,7 @@ export default function Portfolio() {
                   <span className="text-accent-magenta font-black uppercase tracking-[0.3em] text-xs mb-4 block">
                     {t(`portfolio.items.${project.id}.category`)}
                   </span>
-                  <h3 className="text-3xl md:text-5xl font-black text-white leading-none">
+                  <h3 className="text-3xl md:text-5xl font-black text-foreground leading-none">
                     {project.title}
                   </h3>
                 </div>
@@ -83,8 +83,8 @@ export default function Portfolio() {
                       <AlertCircle className="text-red-500 w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-lg mb-1">{t('portfolio.challenge')}</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{t(`portfolio.items.${project.id}.problem`)}</p>
+                      <h4 className="text-foreground font-bold text-lg mb-1">{t('portfolio.challenge')}</h4>
+                      <p className="text-text-secondary text-sm leading-relaxed">{t(`portfolio.items.${project.id}.problem`)}</p>
                     </div>
                   </div>
 
@@ -94,8 +94,8 @@ export default function Portfolio() {
                       <Lightbulb className="text-blue-500 w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-lg mb-1">{t('portfolio.approach')}</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{t(`portfolio.items.${project.id}.solution`)}</p>
+                      <h4 className="text-foreground font-bold text-lg mb-1">{t('portfolio.approach')}</h4>
+                      <p className="text-text-secondary text-sm leading-relaxed">{t(`portfolio.items.${project.id}.solution`)}</p>
                     </div>
                   </div>
 
@@ -105,7 +105,7 @@ export default function Portfolio() {
                       <CheckCircle2 className="text-accent-cyan w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-lg mb-1">{t('portfolio.impact')}</h4>
+                      <h4 className="text-foreground font-bold text-lg mb-1">{t('portfolio.impact')}</h4>
                       <p className="text-accent-cyan font-bold text-lg">{t(`portfolio.items.${project.id}.results`)}</p>
                     </div>
                   </div>
@@ -114,19 +114,19 @@ export default function Portfolio() {
                 <div className="pt-4">
                   <a
                     href={project.link}
-                    className="inline-flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest border-b-2 border-accent-magenta pb-2 transition-all"
+                    className="inline-flex items-center gap-2 text-foreground font-black text-sm uppercase tracking-widest border-b-2 border-accent-magenta pb-2 transition-all"
                   >
                     {t('portfolio.cta')} <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
 
       {/* Background Decorative Element - Desktop Only */}
-      {!isMobile && <div className="absolute top-1/2 left-0 w-full h-full bg-aura-gradient opacity-20 -z-0 pointer-events-none" />}
+      {!isMobile && <div className="absolute inset-0 bg-aura-gradient dark:opacity-20 opacity-10 -z-0 pointer-events-none" />}
     </section>
   );
 }

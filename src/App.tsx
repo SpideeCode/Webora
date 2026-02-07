@@ -15,7 +15,7 @@ const Login = lazy(() => import('./components/admin/Login'));
 const Dashboard = lazy(() => import('./components/admin/Dashboard'));
 
 const PageLoader = () => (
-  <div className="fixed inset-0 bg-primary z-[999] flex items-center justify-center">
+  <div className="fixed inset-0 bg-background z-[999] flex items-center justify-center">
     <div className="w-12 h-12 border-2 border-accent-magenta border-t-transparent rounded-full animate-spin" />
   </div>
 );
@@ -26,40 +26,44 @@ const SectionLoader = () => (
   </div>
 );
 
+import { ThemeProvider } from './context/ThemeContext';
+
 function App() {
   return (
-    <LazyMotion features={domAnimation} strict>
-      <div className="min-h-screen bg-primary relative overflow-hidden">
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Navbar />
-              <main className="w-full relative z-10">
-                <Hero />
-                <Suspense fallback={<SectionLoader />}>
-                  <Services />
-                  <Portfolio />
-                  <Methodology />
-                  <Contact />
-                  <Footer />
-                </Suspense>
-              </main>
-            </>
-          } />
-          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-          <Route path="/admin/login" element={
-            <Suspense fallback={<PageLoader />}>
-              <Login />
-            </Suspense>
-          } />
-          <Route path="/admin/dashboard" element={
-            <Suspense fallback={<PageLoader />}>
-              <Dashboard />
-            </Suspense>
-          } />
-        </Routes>
-      </div>
-    </LazyMotion>
+    <ThemeProvider>
+      <LazyMotion features={domAnimation} strict>
+        <div className="min-h-screen bg-background relative overflow-hidden text-foreground">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Navbar />
+                <main className="w-full relative z-10">
+                  <Hero />
+                  <Suspense fallback={<SectionLoader />}>
+                    <Services />
+                    <Portfolio />
+                    <Methodology />
+                    <Contact />
+                    <Footer />
+                  </Suspense>
+                </main>
+              </>
+            } />
+            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+            <Route path="/admin/login" element={
+              <Suspense fallback={<PageLoader />}>
+                <Login />
+              </Suspense>
+            } />
+            <Route path="/admin/dashboard" element={
+              <Suspense fallback={<PageLoader />}>
+                <Dashboard />
+              </Suspense>
+            } />
+          </Routes>
+        </div>
+      </LazyMotion>
+    </ThemeProvider>
   );
 }
 

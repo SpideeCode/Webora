@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Globe,
     Cpu,
@@ -113,21 +113,21 @@ export default function SmartFunnel() {
             {/* Progress Bar */}
             <div className="flex justify-between mb-16 px-4 relative">
                 {/* Connecting Lines Background */}
-                <div className="absolute top-5 left-8 right-8 h-[1px] bg-white/5 z-0 hidden sm:block" />
+                <div className="absolute top-5 left-8 right-8 h-[1px] bg-foreground/5 z-0 hidden sm:block" />
 
                 {steps.map((step, idx) => (
                     <div key={idx} className="flex flex-col items-center gap-3 group relative z-10 w-1/4">
                         <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 bg-primary ${idx <= currentStep
-                                ? 'border-accent-magenta text-white shadow-[0_0_20px_rgba(255,0,128,0.3)]'
-                                : 'border-white/10 text-gray-600'
+                            className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 bg-background ${idx <= currentStep
+                                ? 'border-accent-magenta text-foreground shadow-[0_0_20px_rgba(255,0,128,0.3)]'
+                                : 'border-foreground/10 text-text-secondary'
                                 }`}
                         >
                             {idx < currentStep ? <CheckCircle size={18} className="text-accent-magenta" /> : idx + 1}
                         </div>
 
                         <div className="text-center">
-                            <span className={`text-[9px] font-black uppercase tracking-[0.2em] transition-colors whitespace-nowrap block mb-1 ${idx <= currentStep ? 'text-white' : 'text-gray-600'
+                            <span className={`text-[9px] font-black uppercase tracking-[0.2em] transition-colors whitespace-nowrap block mb-1 ${idx <= currentStep ? 'text-foreground' : 'text-text-secondary'
                                 }`}>
                                 {step.title}
                             </span>
@@ -145,7 +145,7 @@ export default function SmartFunnel() {
             <div className="flex-grow mt-8 relative">
                 <AnimatePresence mode="wait" initial={!isMobile}>
                     {!isSuccess ? (
-                        <motion.div
+                        <m.div
                             key={currentStep}
                             initial={{ opacity: isMobile ? 1 : 0, x: isMobile ? 0 : 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -156,23 +156,23 @@ export default function SmartFunnel() {
                             {currentStep === 0 && (
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {serviceOptions.map((opt) => (
-                                        <motion.button
+                                        <m.button
                                             key={opt.id}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => handleServiceSelect(opt.id as ServiceType)}
                                             className={`p-6 rounded-3xl border text-left transition-all group ${data.service === opt.id
                                                 ? 'bg-accent-magenta/10 border-accent-magenta ring-1 ring-accent-magenta'
-                                                : 'bg-white/5 border-white/10 hover:border-white/20'
+                                                : 'bg-foreground/5 border-foreground/10 hover:border-foreground/20'
                                                 }`}
                                             style={{ willChange: 'transform, opacity' }}
                                         >
-                                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors ${data.service === opt.id ? 'bg-accent-magenta text-white' : 'bg-white/5 text-gray-400 group-hover:text-white'
+                                            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors ${data.service === opt.id ? 'bg-accent-magenta text-white' : 'bg-foreground/5 text-text-secondary group-hover:text-foreground'
                                                 }`}>
                                                 <opt.icon size={24} />
                                             </div>
-                                            <h3 className="font-black text-white text-lg mb-1 uppercase tracking-tight">{opt.label}</h3>
-                                            <p className="text-gray-400 text-xs font-semibold">{opt.desc}</p>
-                                        </motion.button>
+                                            <h3 className="font-black text-foreground text-lg mb-1 uppercase tracking-tight">{opt.label}</h3>
+                                            <p className="text-text-secondary text-xs font-semibold">{opt.desc}</p>
+                                        </m.button>
                                     ))}
                                 </div>
                             )}
@@ -185,8 +185,8 @@ export default function SmartFunnel() {
                                                 key={detail}
                                                 onClick={() => toggleDetail(detail)}
                                                 className={`p-5 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between ${data.details.includes(detail)
-                                                    ? 'bg-accent-cyan/10 border-accent-cyan text-white'
-                                                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
+                                                    ? 'bg-accent-cyan/10 border-accent-cyan text-foreground'
+                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-foreground/20'
                                                     }`}
                                                 style={{ willChange: 'transform, opacity' }}
                                             >
@@ -196,7 +196,7 @@ export default function SmartFunnel() {
                                         ))}
                                     </div>
                                     <div className="flex gap-4 pt-8">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-white/10 text-white font-black uppercase text-xs hover:bg-white/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
@@ -219,7 +219,7 @@ export default function SmartFunnel() {
                                                 onClick={() => setData({ ...data, budget })}
                                                 className={`p-6 rounded-2xl border transition-all duration-300 text-center ${data.budget === budget
                                                     ? 'bg-accent-magenta border-accent-magenta text-white shadow-[0_10px_30px_rgba(255,0,128,0.2)]'
-                                                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
+                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-foreground/20'
                                                     }`}
                                                 style={{ willChange: 'transform, opacity' }}
                                             >
@@ -228,7 +228,7 @@ export default function SmartFunnel() {
                                         ))}
                                     </div>
                                     <div className="flex gap-4 pt-12">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-white/10 text-white font-black uppercase text-xs hover:bg-white/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
@@ -246,38 +246,38 @@ export default function SmartFunnel() {
                                 <div className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2 text-left">
-                                            <label className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-black px-2">Identité</label>
+                                            <label className="text-[10px] uppercase tracking-[0.3em] text-text-secondary font-black px-2">Identité</label>
                                             <input
                                                 type="text"
                                                 placeholder="Votre Nom"
                                                 value={data.name}
                                                 onChange={(e) => setData({ ...data, name: e.target.value })}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-accent-magenta transition-all"
+                                                className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl px-6 py-4 text-foreground placeholder:text-text-secondary/50 focus:outline-none focus:border-accent-magenta transition-all"
                                             />
                                         </div>
                                         <div className="space-y-2 text-left">
-                                            <label className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-black px-2">Canal</label>
+                                            <label className="text-[10px] uppercase tracking-[0.3em] text-text-secondary font-black px-2">Canal</label>
                                             <input
                                                 type="email"
                                                 placeholder="votre@email.com"
                                                 value={data.email}
                                                 onChange={(e) => setData({ ...data, email: e.target.value })}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-accent-magenta transition-all"
+                                                className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl px-6 py-4 text-foreground placeholder:text-text-secondary/50 focus:outline-none focus:border-accent-magenta transition-all"
                                             />
                                         </div>
                                         <div className="md:col-span-2 space-y-2 text-left">
-                                            <label className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-black px-2">Entreprise</label>
+                                            <label className="text-[10px] uppercase tracking-[0.3em] text-text-secondary font-black px-2">Entreprise</label>
                                             <input
                                                 type="text"
                                                 placeholder="Nom de votre structure"
                                                 value={data.company}
                                                 onChange={(e) => setData({ ...data, company: e.target.value })}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-accent-magenta transition-all"
+                                                className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl px-6 py-4 text-foreground placeholder:text-text-secondary/50 focus:outline-none focus:border-accent-magenta transition-all"
                                             />
                                         </div>
                                     </div>
                                     <div className="flex gap-4 pt-12">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-white/10 text-white font-black uppercase text-xs hover:bg-white/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
@@ -289,19 +289,19 @@ export default function SmartFunnel() {
                                         </button>
                                     </div>
                                     {error && (
-                                        <motion.p
+                                        <m.p
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             className="text-red-500 text-[10px] font-bold uppercase tracking-widest mt-4"
                                         >
                                             {error}
-                                        </motion.p>
+                                        </m.p>
                                     )}
                                 </div>
                             )}
-                        </motion.div>
+                        </m.div>
                     ) : (
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             className="py-12 text-center flex flex-col items-center justify-center max-w-lg mx-auto"
@@ -309,21 +309,21 @@ export default function SmartFunnel() {
                             <div className="w-20 h-20 rounded-full bg-accent-cyan/20 flex items-center justify-center text-accent-cyan mb-8 animate-pulse">
                                 <CheckCircle size={40} />
                             </div>
-                            <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tighter">Transmission Réussie</h2>
-                            <p className="text-gray-400 mb-8 leading-relaxed">
+                            <h2 className="text-4xl font-black text-foreground mb-4 uppercase tracking-tighter">Transmission Réussie</h2>
+                            <p className="text-text-secondary mb-8 leading-relaxed">
                                 Votre briefing a été reçu avec succès par l'équipe Webora. Nous analysons vos données et nous vous recontacterons sous 24h.
                             </p>
-                            <div className="w-full p-8 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl">
+                            <div className="w-full p-8 border border-foreground/10 rounded-3xl bg-foreground/5 backdrop-blur-xl">
                                 <p className="text-accent-magenta font-black uppercase tracking-widest text-xs mb-4">Étape Suivante</p>
                                 <a
                                     href="https://calendly.com/"
                                     target="_blank"
-                                    className="block w-full py-4 rounded-xl bg-white text-primary font-black uppercase text-xs hover:scale-105 transition-all"
+                                    className="block w-full py-4 rounded-xl bg-foreground text-background font-black uppercase text-xs hover:scale-105 transition-all"
                                 >
                                     Planifier un Appel Expert
                                 </a>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>
