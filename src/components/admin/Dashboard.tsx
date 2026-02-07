@@ -6,7 +6,6 @@ import {
     LogOut,
     Search,
     RefreshCcw,
-    Rocket,
     Mail,
     Trash2,
     ChevronDown
@@ -47,14 +46,14 @@ function LeadDetailModal({ lead, onClose, onUpdateStatus }: LeadDetailModalProps
                 <div className="p-8 md:p-12">
                     <div className="flex justify-between items-start mb-10">
                         <div>
-                            <span className={`px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest mb-4 inline-block ${lead.status === 'New' ? 'text-accent-cyan bg-accent-cyan/10 border-accent-cyan/20' :
-                                lead.status === 'In Progress' ? 'text-accent-magenta bg-accent-magenta/10 border-accent-magenta/20' :
-                                    'text-gray-500 bg-gray-500/10 border-gray-500/20'
+                            <span className={`px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest mb-4 inline-block ${lead.status === 'New' ? 'text-blue-600 bg-blue-50 border-blue-200' :
+                                lead.status === 'In Progress' ? 'text-amber-600 bg-amber-50 border-amber-200' :
+                                    'text-gray-500 bg-gray-50 border-gray-200'
                                 }`}>
-                                {lead.status}
+                                {lead.status === 'New' ? 'EN ATTENTE' : lead.status === 'In Progress' ? 'CONTACTÉ' : 'TERMINÉ'}
                             </span>
-                            <h2 className="text-3xl font-black text-foreground uppercase tracking-tighter italic">{lead.client_name}</h2>
-                            <p className="text-text-secondary text-sm font-bold mt-1">{lead.company || 'Indépendant'}</p>
+                            <h2 className="text-3xl font-black text-[#002B4D] uppercase tracking-tighter italic">{lead.client_name}</h2>
+                            <p className="text-text-secondary text-sm font-bold mt-1 uppercase tracking-widest">{lead.company || 'PARTICULIER'}</p>
                         </div>
                         <button onClick={onClose} className="p-2 hover:bg-foreground/10 rounded-full transition-colors text-foreground">
                             <LogOut size={24} className="rotate-180" />
@@ -111,10 +110,10 @@ function LeadDetailModal({ lead, onClose, onUpdateStatus }: LeadDetailModalProps
                         </div>
                     </div>
 
-                    <div className="mt-12 pt-8 border-t border-foreground/5 flex gap-4">
+                    <div className="mt-12 pt-8 border-t border-foreground/5 flex flex-col md:flex-row gap-4">
                         <button
                             onClick={() => onUpdateStatus(lead.id, 'In Progress')}
-                            className="flex-grow py-4 bg-accent-magenta text-white rounded-xl font-black uppercase text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-accent-magenta/20"
+                            className="flex-grow py-4 bg-[#002B4D] text-white rounded-xl font-black uppercase text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-[#002B4D]/20"
                         >
                             Marquer comme En Cours
                         </button>
@@ -265,80 +264,98 @@ export default function Dashboard() {
             </AnimatePresence>
 
             <main className="min-h-screen">
-                {/* Top Banner */}
-                <div className="bg-background dark:bg-black/40 border-b border-foreground/10 py-4 px-12 flex justify-between items-center shadow-lg">
-                    <div className="flex items-center gap-4">
-                        <div className="bg-foreground/5 p-1.5 rounded">
-                            <Users size={20} className="text-foreground" />
+                {/* Header Section */}
+                <div className="bg-[#002B4D] text-white border-b border-white/10 py-4 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
+                    <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+                        <div className="flex items-center gap-3">
+                            <div className="bg-white p-1.5 rounded shadow-sm">
+                                <Users size={20} className="text-[#002B4D]" />
+                            </div>
+                            <h2 className="text-xl font-black uppercase tracking-tight italic">WEBORA ADMIN</h2>
                         </div>
-                        <h2 className="text-xl font-black uppercase tracking-tight text-foreground">WEBORA ADMIN</h2>
+                        <div className="md:hidden">
+                            <button onClick={handleLogout} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+                                <LogOut size={20} />
+                            </button>
+                        </div>
                     </div>
-                    <div className="flex gap-4 items-center">
-                        <button onClick={() => navigate('/')} className="text-xs font-bold uppercase tracking-widest border border-foreground/20 px-4 py-2 rounded hover:bg-foreground/10 transition-all text-foreground">Voir le site</button>
-                        <button onClick={fetchLeads} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-foreground/80 transition-all text-foreground">
-                            <RefreshCcw size={14} /> Actualiser
+                    <div className="flex gap-4 items-center w-full md:w-auto justify-center md:justify-end overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+                        <button
+                            onClick={() => navigate('/')}
+                            className="whitespace-nowrap text-[10px] font-black uppercase tracking-widest border border-white/20 px-4 py-2 rounded hover:bg-white/10 transition-all text-white"
+                        >
+                            VOIR LE SITE
                         </button>
-                        <button onClick={handleLogout} className="dark:bg-white dark:text-black bg-black text-white px-6 py-2 rounded font-black text-xs uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-gray-100 transition-all">Déconnexion</button>
+                        <button
+                            onClick={fetchLeads}
+                            className="whitespace-nowrap flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-white/80 transition-all text-white border border-white/20 px-4 py-2 rounded"
+                        >
+                            <RefreshCcw size={12} /> ACTUALISER
+                        </button>
+                        <button
+                            onClick={handleLogout}
+                            className="hidden md:block bg-white text-[#002B4D] px-6 py-2 rounded font-black text-xs uppercase tracking-widest hover:bg-gray-100 transition-all shadow-lg"
+                        >
+                            DÉCONNEXION
+                        </button>
                     </div>
                 </div>
 
-                <div className="max-w-[1400px] mx-auto p-12">
+                <div className="max-w-[1400px] mx-auto p-4 md:p-12">
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12">
                         {[
                             { label: 'TOTAL', val: stats.total },
                             { label: 'EN ATTENTE', val: stats.pending },
                             { label: 'CONTACTÉS', val: stats.inProgress },
                             { label: 'TERMINÉS', val: stats.finished },
                         ].map((stat, i) => (
-                            <div key={i} className="bg-glass-card p-8 border-2 border-foreground/10 shadow-[4px_4px_0px_#FF0080]">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">{stat.label}</p>
-                                <p className="text-4xl font-black text-foreground">{stat.val}</p>
+                            <div key={i} className="bg-white dark:bg-black/20 p-4 md:p-8 border-2 border-[#002B4D]/10 md:border-[#002B4D]/20 shadow-sm rounded-xl">
+                                <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-text-secondary mb-1 md:mb-2">{stat.label}</p>
+                                <p className="text-2xl md:text-4xl font-black text-[#002B4D] dark:text-white italic">{stat.val}</p>
                             </div>
                         ))}
                     </div>
 
                     {/* Tabs */}
-                    <div className="flex gap-8 border-b-2 border-foreground/5 mb-12">
+                    <div className="flex bg-[#F5F7FA] dark:bg-white/5 p-1 rounded-xl mb-8 md:mb-12 overflow-x-auto scrollbar-none">
                         <button
                             onClick={() => setActiveTab('current')}
-                            className={`pb-4 px-8 text-sm font-black uppercase tracking-widest transition-all relative ${activeTab === 'current' ? 'text-accent-magenta' : 'text-text-secondary hover:text-foreground'
+                            className={`flex-1 min-w-[160px] py-3 px-4 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all rounded-lg ${activeTab === 'current' ? 'bg-[#002B4D] text-white shadow-lg' : 'text-text-secondary hover:text-foreground'
                                 }`}
                         >
                             Dossiers en cours ({stats.pending + stats.inProgress})
-                            {activeTab === 'current' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-magenta" />}
                         </button>
                         <button
                             onClick={() => setActiveTab('finished')}
-                            className={`pb-4 px-8 text-sm font-black uppercase tracking-widest transition-all relative ${activeTab === 'finished' ? 'text-accent-magenta' : 'text-text-secondary hover:text-foreground'
+                            className={`flex-1 min-w-[160px] py-3 px-4 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all rounded-lg ${activeTab === 'finished' ? 'bg-[#002B4D] text-white shadow-lg' : 'text-text-secondary hover:text-foreground'
                                 }`}
                         >
                             Dossiers terminés ({stats.finished})
-                            {activeTab === 'finished' && <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-magenta" />}
                         </button>
                     </div>
 
                     {/* Controls */}
-                    <div className="flex flex-col lg:flex-row gap-6 mb-8 items-stretch lg:items-center">
-                        <div className="relative flex-grow max-w-xl">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                    <div className="flex flex-col gap-4 mb-8">
+                        <div className="relative w-full">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                             <input
                                 type="text"
                                 placeholder="RECHERCHER UN NOM, TÉLÉPHONE..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full bg-background border-2 border-foreground/10 pl-16 pr-6 py-4 text-sm focus:outline-none focus:border-accent-magenta transition-all font-bold placeholder:text-text-secondary/30 uppercase tracking-widest text-foreground"
+                                className="w-full bg-white dark:bg-white/5 border border-[#002B4D]/10 dark:border-white/10 pl-12 pr-4 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#002B4D]/20 rounded-xl font-bold placeholder:text-text-secondary/30 uppercase tracking-widest text-foreground shadow-sm"
                             />
                         </div>
 
-                        <div className="flex gap-2 flex-wrap">
+                        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
                             {['TOUS', 'WEB', 'SAAS', 'VIDEO', 'AI'].map((service) => (
                                 <button
                                     key={service}
                                     onClick={() => setSelectedService(service)}
-                                    className={`px-6 py-4 border-2 font-black text-xs uppercase tracking-widest transition-all ${selectedService === service
-                                        ? 'bg-accent-magenta text-white border-accent-magenta'
-                                        : 'bg-background text-foreground border-foreground/10 hover:border-accent-magenta/50'
+                                    className={`px-6 py-2 border rounded-full font-black text-[10px] uppercase tracking-widest transition-all whitespace-nowrap ${selectedService === service
+                                        ? 'bg-[#002B4D] text-white border-[#002B4D]'
+                                        : 'bg-white dark:bg-white/5 text-foreground border-[#002B4D]/10 dark:border-white/10 hover:border-[#002B4D]/30'
                                         }`}
                                 >
                                     {service}
@@ -348,82 +365,70 @@ export default function Dashboard() {
                     </div>
 
                     {/* Lead Cards List */}
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                         <AnimatePresence mode="popLayout">
                             {filteredLeads.map((lead) => (
                                 <m.div
                                     layout
                                     key={lead.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
-                                    className="bg-glass-card border border-foreground/10 p-8 shadow-[6px_6px_0px_rgba(255,0,128,0.05)] relative group overflow-hidden"
+                                    className="bg-white dark:bg-white/5 border border-[#002B4D]/10 dark:border-white/10 p-5 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-all relative overflow-hidden group"
                                 >
-                                    <div className="flex flex-col md:flex-row justify-between gap-8">
-                                        {/* Left Side Info */}
+                                    <div className="flex flex-col md:flex-row justify-between gap-6">
                                         <div className="flex-grow">
-                                            <div className="flex items-center gap-4 mb-4">
-                                                <div className="w-4 h-4 bg-accent-magenta rounded-sm" />
-                                                <span className="text-xs font-black text-accent-magenta uppercase tracking-[0.2em]">{lead.service_type}</span>
-                                                <span className="text-xs font-bold text-text-secondary uppercase tracking-widest">{new Date(lead.created_at).toLocaleString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                                            <div className="flex items-center justify-between md:justify-start gap-4 mb-3">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-2 h-2 bg-[#002B4D] dark:bg-white rounded-full" />
+                                                    <span className="text-[10px] font-black text-[#002B4D] dark:text-white uppercase tracking-widest">{lead.service_type}</span>
+                                                </div>
+                                                <span className="text-[10px] font-bold text-text-secondary uppercase tracking-widest">{new Date(lead.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
                                             </div>
 
-                                            <h3 className="text-3xl font-black text-foreground uppercase tracking-tighter mb-4 italic">{lead.client_name}</h3>
+                                            <h3 className="text-xl md:text-2xl font-black text-[#002B4D] dark:text-white uppercase tracking-tight italic mb-4">{lead.client_name}</h3>
 
-                                            <div className="flex flex-wrap gap-8 mb-8">
-                                                <a href={`mailto:${lead.client_email}`} className="flex items-center gap-2 text-text-secondary hover:text-accent-magenta transition-colors font-bold text-sm">
-                                                    <Mail size={16} className="text-accent-magenta" /> {lead.client_email}
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                                                <a href={`mailto:${lead.client_email}`} className="flex items-center gap-2 text-text-secondary hover:text-[#002B4D] dark:hover:text-white transition-colors font-bold text-xs truncate">
+                                                    <Mail size={14} className="flex-shrink-0" /> {lead.client_email}
                                                 </a>
                                                 {lead.company && (
-                                                    <div className="flex items-center gap-2 text-text-secondary font-bold text-sm">
-                                                        <Users size={16} className="text-accent-magenta" /> {lead.company}
+                                                    <div className="flex items-center gap-2 text-text-secondary font-bold text-xs">
+                                                        <Users size={14} className="flex-shrink-0" /> {lead.company}
                                                     </div>
                                                 )}
-                                                <div className="flex items-center gap-2 text-text-secondary font-bold text-sm">
-                                                    <Rocket size={16} className="text-accent-magenta" /> {lead.budget}
-                                                </div>
                                             </div>
 
-                                            {/* Expandable Details - Card Style */}
-                                            <div className="bg-foreground/5 p-8 rounded border border-foreground/10">
-                                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-6 border-b border-foreground/10 pb-2">Détails du formulaire</h4>
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-12">
-                                                    {lead.details.map((detail, idx) => (
-                                                        <div key={idx} className="flex flex-col">
-                                                            <span className="text-[9px] font-black text-text-secondary uppercase tracking-widest mb-1">Point {idx + 1}</span>
-                                                            <span className="text-sm font-black text-foreground uppercase tracking-tight italic">{detail}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
+                                            <div className="bg-[#F8FAFC] dark:bg-white/5 p-4 rounded-xl border border-[#002B4D]/5 dark:border-white/5">
+                                                <button
+                                                    onClick={() => setSelectedLead(lead)}
+                                                    className="w-full flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-[#002B4D] dark:text-white/60 hover:text-[#002B4D] transition-colors"
+                                                >
+                                                    DÉTAILS DU FORMULAIRE
+                                                    <ChevronDown size={14} className="-rotate-90" />
+                                                </button>
                                             </div>
                                         </div>
 
-                                        {/* Right Side Controls */}
-                                        <div className="flex flex-col justify-between items-end gap-10 min-w-[220px]">
-                                            <div className="w-full">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-2 block text-right">Statut</label>
-                                                <div className="relative">
-                                                    <select
-                                                        value={lead.status}
-                                                        onChange={(e) => handleStatusUpdate(lead.id, e.target.value as any)}
-                                                        className={`w-full appearance-none border-2 border-foreground/10 px-6 py-4 rounded font-black text-xs uppercase tracking-widest focus:outline-none cursor-pointer pr-12 transition-colors ${lead.status === 'New' ? 'bg-[#FFFDC6]/20 dark:bg-[#FFFDC6]/10 text-foreground' :
-                                                            lead.status === 'In Progress' ? 'bg-[#E3F2FD]/20 dark:bg-[#E3F2FD]/10 text-foreground' :
-                                                                'bg-foreground/10 text-text-secondary'
-                                                            }`}
-                                                    >
-                                                        <option value="New">En Attente</option>
-                                                        <option value="In Progress">Contacté</option>
-                                                        <option value="Archived">Terminé</option>
-                                                    </select>
-                                                    <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground pointer-events-none" />
-                                                </div>
+                                        <div className="flex flex-col gap-3 min-w-[200px]">
+                                            <div className="relative">
+                                                <select
+                                                    value={lead.status}
+                                                    onChange={(e) => handleStatusUpdate(lead.id, e.target.value as any)}
+                                                    className="w-full appearance-none bg-[#F1F5F9] dark:bg-white/5 border border-transparent px-4 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest focus:outline-none cursor-pointer pr-10 text-[#002B4D] dark:text-white"
+                                                >
+                                                    <option value="New">EN ATTENTE</option>
+                                                    <option value="In Progress">CONTACTÉ</option>
+                                                    <option value="Archived">TERMINÉ</option>
+                                                </select>
+                                                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#002B4D] dark:text-white pointer-events-none" />
                                             </div>
 
                                             <button
                                                 onClick={() => handleDelete(lead.id)}
-                                                className="flex items-center justify-center gap-3 border-2 border-[#FF5252] text-[#FF5252] w-full py-4 rounded font-black text-xs uppercase tracking-widest hover:bg-[#FF5252] hover:text-white transition-all group shadow-sm active:scale-95"
+                                                className="flex items-center justify-center gap-2 text-[#FF5252] dark:text-[#ff4d4d] w-full py-3 rounded-xl font-black text-[10px] uppercase tracking-widest border border-[#FF5252]/10 dark:border-[#ff4d4d]/10 hover:bg-[#FF5252] hover:text-white transition-all transition-colors active:scale-95"
                                             >
-                                                <Trash2 size={18} /> Supprimer
+                                                <Trash2 size={14} /> SUPPRIMER
                                             </button>
                                         </div>
                                     </div>
