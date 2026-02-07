@@ -110,9 +110,7 @@ export default function Contact() {
                     <Globe size={18} />
                   </a>
                 </div>
-                <p className="text-[9px] text-text-secondary/60 font-black uppercase tracking-[0.2em] italic max-w-[200px] leading-relaxed">
-                  "Nous forgeons des empires digitaux."
-                </p>
+
               </div>
             </div>
           </m.div>

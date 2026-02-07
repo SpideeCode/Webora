@@ -94,10 +94,10 @@ export default function Footer() {
             <ul className="space-y-6">
               {footerLinks.contact.map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
-                  <div className="w-8 h-8 glass-morphism rounded-lg flex items-center justify-center border border-foreground/5">
+                  <div className="w-8 h-8 glass-morphism rounded-lg flex items-center justify-center border border-foreground/5 shrink-0">
                     <item.icon className="w-3 h-3 text-accent-cyan" />
                   </div>
-                  <a href={item.href} className="text-text-secondary hover:text-foreground text-sm transition-colors font-medium leading-tight">
+                  <a href={item.href} className="text-text-secondary hover:text-foreground text-sm transition-colors font-medium leading-tight break-all">
                     {item.text}
                   </a>
                 </li>
