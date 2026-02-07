@@ -53,14 +53,16 @@ export default function Portfolio() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t dark:from-background from-background via-transparent to-transparent opacity-60" />
 
-                  {/* Overlay Link */}
+                  {/* Link Overlay - Entire image clickable */}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute top-6 right-6 w-14 h-14 glass-morphism rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0"
+                    className="absolute inset-0 z-20"
                   >
-                    <ExternalLink className="text-foreground w-6 h-6" />
+                    <div className="absolute top-6 right-6 w-14 h-14 glass-morphism rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                      <ExternalLink className="text-foreground w-6 h-6" />
+                    </div>
                   </a>
                 </m.div>
               </div>
@@ -68,7 +70,7 @@ export default function Portfolio() {
               {/* Narrative Side */}
               <div className="flex-1 space-y-8">
                 <div>
-                  <span className="text-accent-magenta font-black uppercase tracking-[0.3em] text-xs mb-4 block">
+                  <span className="text-accent-cyan font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
                     {t(`portfolio.items.${project.id}.category`)}
                   </span>
                   <h3 className="text-3xl md:text-5xl font-black text-foreground leading-none">

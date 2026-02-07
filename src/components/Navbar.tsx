@@ -69,7 +69,7 @@ export default function Navbar() {
               height="32"
               className="h-8 w-auto dark:brightness-200 brightness-0"
             />
-            <span className="text-xl font-black text-foreground tracking-widest uppercase">
+            <span className="text-xl font-black text-accent-cyan tracking-widest uppercase italic">
               Webora
             </span>
           </button>
@@ -80,7 +80,7 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-foreground transition-colors"
+                className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors"
               >
                 {link.label}
               </button>

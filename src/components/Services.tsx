@@ -1,6 +1,5 @@
 import { m, AnimatePresence } from 'framer-motion';
 import { services } from '../data/services';
-import { useState } from 'react';
 import { ArrowUpRight, Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -16,11 +15,7 @@ export default function Services() {
     { id: 'Strategy & AI', label: t('services.categories.strategy_ai') }
   ];
 
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredServices = activeCategory === 'All'
-    ? services
-    : services.filter(s => s.category === activeCategory);
+  // No filtering - all services shown as requested
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -60,18 +55,14 @@ export default function Services() {
         </m.div>
 
         {/* Filtering */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-4 mb-20">
           {categories.map((cat) => (
-            <button
+            <div
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all border ${activeCategory === cat.id
-                ? 'dark:bg-white dark:text-black bg-black text-white border-foreground'
-                : 'text-text-secondary border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30'
-                }`}
+              className="px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all border text-text-secondary border-black/5 dark:border-white/5 hover:text-accent-cyan hover:border-accent-cyan/50 cursor-default"
             >
               {cat.label}
-            </button>
+            </div>
           ))}
         </div>
 
@@ -83,7 +74,7 @@ export default function Services() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           <AnimatePresence mode="popLayout" initial={!isMobile}>
-            {filteredServices.map((service) => {
+            {services.map((service) => {
               const Icon = service.icon;
               const features = t(`services.items.${service.id}.features`, { returnObjects: true }) as string[];
 
@@ -99,11 +90,11 @@ export default function Services() {
                     <ArrowUpRight className="text-foreground w-6 h-6" />
                   </div>
 
-                  <div className="w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent-magenta/20 transition-colors">
-                    <Icon className="w-7 h-7 text-foreground group-hover:text-accent-magenta transition-colors" />
+                  <div className="w-14 h-14 bg-accent-cyan/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-accent-cyan/20 transition-colors">
+                    <Icon className="w-7 h-7 text-accent-cyan group-hover:scale-110 transition-transform" />
                   </div>
 
-                  <h3 className="text-2xl font-black text-foreground mb-4 group-hover:text-accent-magenta transition-colors">
+                  <h3 className="text-2xl font-black text-foreground mb-4 group-hover:text-accent-cyan transition-colors">
                     {t(`services.items.${service.id}.title`)}
                   </h3>
 

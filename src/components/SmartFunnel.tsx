@@ -162,7 +162,7 @@ export default function SmartFunnel() {
                                             onClick={() => handleServiceSelect(opt.id as ServiceType)}
                                             className={`p-6 rounded-3xl border text-left transition-all group ${data.service === opt.id
                                                 ? 'bg-accent-magenta/10 border-accent-magenta ring-1 ring-accent-magenta'
-                                                : 'bg-foreground/5 border-foreground/10 hover:border-foreground/20'
+                                                : 'bg-foreground/5 border-foreground/10 hover:border-accent-magenta/50 hover:bg-accent-magenta/5'
                                                 }`}
                                             style={{ willChange: 'transform, opacity' }}
                                         >
@@ -186,7 +186,7 @@ export default function SmartFunnel() {
                                                 onClick={() => toggleDetail(detail)}
                                                 className={`p-5 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between ${data.details.includes(detail)
                                                     ? 'bg-accent-cyan/10 border-accent-cyan text-foreground'
-                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-foreground/20'
+                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-accent-magenta/50 hover:bg-accent-magenta/5'
                                                     }`}
                                                 style={{ willChange: 'transform, opacity' }}
                                             >
@@ -196,13 +196,13 @@ export default function SmartFunnel() {
                                         ))}
                                     </div>
                                     <div className="flex gap-4 pt-8">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-accent-magenta/10 hover:border-accent-magenta/30 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
                                             onClick={nextStep}
                                             disabled={data.details.length === 0}
-                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:translate-x-1 transition-all"
+                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,0,128,0.4)] hover:translate-x-1 transition-all"
                                         >
                                             Continuer <ArrowRight size={16} />
                                         </button>
@@ -219,7 +219,7 @@ export default function SmartFunnel() {
                                                 onClick={() => setData({ ...data, budget })}
                                                 className={`p-6 rounded-2xl border transition-all duration-300 text-center ${data.budget === budget
                                                     ? 'bg-accent-magenta border-accent-magenta text-white shadow-[0_10px_30px_rgba(255,0,128,0.2)]'
-                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-foreground/20'
+                                                    : 'bg-foreground/5 border-foreground/10 text-text-secondary hover:border-accent-magenta/50 hover:bg-accent-magenta/5'
                                                     }`}
                                                 style={{ willChange: 'transform, opacity' }}
                                             >
@@ -228,13 +228,13 @@ export default function SmartFunnel() {
                                         ))}
                                     </div>
                                     <div className="flex gap-4 pt-12">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-accent-magenta/10 hover:border-accent-magenta/30 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
                                             onClick={nextStep}
                                             disabled={!data.budget}
-                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:translate-x-1 transition-all"
+                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,0,128,0.4)] hover:translate-x-1 transition-all"
                                         >
                                             Finaliser <ArrowRight size={16} />
                                         </button>
@@ -277,13 +277,13 @@ export default function SmartFunnel() {
                                         </div>
                                     </div>
                                     <div className="flex gap-4 pt-12">
-                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-foreground/5 transition-all flex items-center gap-2">
+                                        <button onClick={prevStep} className="px-8 py-4 rounded-xl border border-foreground/10 text-foreground font-black uppercase text-xs hover:bg-accent-magenta/10 hover:border-accent-magenta/30 transition-all flex items-center gap-2">
                                             <ArrowLeft size={16} /> Retour
                                         </button>
                                         <button
                                             onClick={handleSubmit}
                                             disabled={!data.name || !data.email || isSubmitting}
-                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_30px_rgba(255,0,128,0.2)]"
+                                            className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(255,0,128,0.4)] hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_30px_rgba(255,0,128,0.2)]"
                                         >
                                             {isSubmitting ? 'Transmission...' : 'Initier le Projet'} <Zap size={16} />
                                         </button>
@@ -318,7 +318,7 @@ export default function SmartFunnel() {
                                 <a
                                     href="https://calendly.com/"
                                     target="_blank"
-                                    className="block w-full py-4 rounded-xl bg-foreground text-background font-black uppercase text-xs hover:scale-105 transition-all"
+                                    className="block w-full py-4 rounded-xl bg-foreground text-background font-black uppercase text-xs hover:bg-accent-magenta hover:text-white hover:shadow-glow-magenta/40 hover:scale-105 transition-all"
                                 >
                                     Planifier un Appel Expert
                                 </a>

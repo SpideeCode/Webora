@@ -43,13 +43,13 @@ export default function Methodology() {
                     viewport={{ once: true }}
                     className="text-center mb-24"
                 >
-                    <span className="text-accent-magenta font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+                    <span className="text-accent-cyan font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
                         {t('methodology.badge')}
                     </span>
                     <h2 className="text-4xl md:text-7xl font-black text-foreground mb-6 tracking-tighter uppercase">
                         {t('methodology.title')}
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-accent-magenta to-accent-cyan mx-auto rounded-full" />
+                    <div className="w-24 h-1 bg-accent-cyan mx-auto rounded-full" />
                 </m.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative">
@@ -68,10 +68,10 @@ export default function Methodology() {
                                 className="relative z-10 text-center group"
                             >
                                 <div className="relative mb-8 inline-block">
-                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center border border-black/10 dark:border-white/10 glass-morphism transition-all ${!isMobile ? 'group-hover:scale-110 group-hover:border-accent-magenta/50 group-hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]' : ''} relative z-10 bg-background`}>
-                                        <Icon className={`w-6 h-6 text-foreground ${!isMobile ? 'group-hover:text-accent-magenta' : ''} transition-colors`} />
+                                    <div className={`w-14 h-14 rounded-full flex items-center justify-center border border-black/10 dark:border-white/10 glass-morphism transition-all ${!isMobile ? 'group-hover:scale-110 group-hover:border-accent-cyan/50 group-hover:shadow-[0_0_30px_rgba(14,165,233,0.2)]' : ''} relative z-10 bg-background`}>
+                                        <Icon className={`w-6 h-6 text-foreground ${!isMobile ? 'group-hover:text-accent-cyan' : ''} transition-colors`} />
                                     </div>
-                                    {!isMobile && <div className="absolute -inset-2 bg-accent-magenta/5 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />}
+                                    {!isMobile && <div className="absolute -inset-2 bg-accent-cyan/5 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />}
                                 </div>
 
                                 <h3 className="text-xl font-black text-foreground mb-4 uppercase tracking-[0.2em]">{step.title}</h3>
@@ -79,7 +79,7 @@ export default function Methodology() {
                                     {step.description}
                                 </p>
 
-                                <div className="mt-8 text-[40px] font-black text-foreground/[0.03] group-hover:text-accent-magenta/5 transition-colors pointer-events-none select-none italic">
+                                <div className="mt-8 text-[40px] font-black text-foreground/[0.03] group-hover:text-accent-cyan transition-colors pointer-events-none select-none italic">
                                     STEP 0{index + 1}
                                 </div>
                             </m.div>
@@ -89,7 +89,7 @@ export default function Methodology() {
             </div>
 
             {/* Dynamic Background Noise/Aura */}
-            <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-accent-magenta/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-accent-cyan/5 to-transparent pointer-events-none" />
         </section>
     );
 }

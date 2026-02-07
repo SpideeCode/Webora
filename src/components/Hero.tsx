@@ -60,9 +60,9 @@ export default function Hero() {
         >
           <span className="relative flex h-2 w-2">
             {!isMobile && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-magenta opacity-75"></span>}
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-magenta"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-cyan"></span>
           </span>
-          <span className="text-[10px] md:text-sm font-medium tracking-wider uppercase text-text-secondary">
+          <span className="text-[10px] md:text-sm font-black tracking-wider uppercase text-accent-cyan">
             {t('hero.badge')}
           </span>
         </m.div>
@@ -92,7 +92,7 @@ export default function Hero() {
         >
           <button
             onClick={() => scrollToSection('contact')}
-            className="w-full sm:w-auto group relative px-8 py-4 dark:bg-white dark:text-black bg-black text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95"
+            className="w-full sm:w-auto group relative px-8 py-4 dark:bg-white dark:text-black bg-black text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-glow-cyan/20"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               {t('hero.cta_primary')} <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
