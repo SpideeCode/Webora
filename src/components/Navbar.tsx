@@ -67,9 +67,9 @@ export default function Navbar() {
               alt="Webora"
               width="32"
               height="32"
-              className="h-8 w-auto dark:brightness-200 brightness-0"
+              className="h-8 w-auto dark:brightness-200"
             />
-            <span className="text-xl font-black text-accent-cyan tracking-widest uppercase italic">
+            <span className="text-xl font-black text-foreground tracking-widest uppercase">
               Webora
             </span>
           </button>

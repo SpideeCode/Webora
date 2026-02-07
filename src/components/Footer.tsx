@@ -37,7 +37,7 @@ export default function Footer() {
                 alt="Webora"
                 width="32"
                 height="32"
-                className="h-8 w-auto dark:brightness-200 brightness-0"
+                className="h-8 w-auto dark:brightness-200"
               />
               <span className="text-2xl font-black text-foreground tracking-widest uppercase">Webora</span>
             </div>
