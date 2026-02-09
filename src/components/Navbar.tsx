@@ -43,12 +43,7 @@ export default function Navbar() {
     }
   };
 
-  const navLinks = [
-    { id: 'services', label: 'Services' },
-    { id: 'realisations', label: 'Portfolio' },
-    { id: 'methodology', label: 'Méthodologie' },
-    { id: 'contact', label: 'Contact' }
-  ];
+
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${!isMobile ? 'transition-all duration-500' : ''} ${isScrolled
@@ -77,16 +72,18 @@ export default function Navbar() {
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors"
-                style={{ fontSize: '11px' }} // Slightly smaller for better fit
-              >
-                {link.label}
-              </button>
-            ))}
+            <button key="services" onClick={() => scrollToSection('services')} className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors" style={{ fontSize: '11px' }}>
+              {t('nav.expertises')}
+            </button>
+            <button key="realisations" onClick={() => scrollToSection('realisations')} className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors" style={{ fontSize: '11px' }}>
+              {t('nav.portfolio')}
+            </button>
+            <button key="methodology" onClick={() => scrollToSection('methodology')} className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors" style={{ fontSize: '11px' }}>
+              {t('nav.approach')}
+            </button>
+            <button key="contact" onClick={() => scrollToSection('contact')} className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors" style={{ fontSize: '11px' }}>
+              {t('nav.contact')}
+            </button>
           </div>
 
           {/* Desktop Controls - Right */}
@@ -136,15 +133,18 @@ export default function Navbar() {
               </button>
             </div>
             <div className="flex flex-col gap-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left"
-                >
-                  {link.label}
-                </button>
-              ))}
+              <button onClick={() => scrollToSection('services')} className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left">
+                {t('nav.expertises')}
+              </button>
+              <button onClick={() => scrollToSection('realisations')} className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left">
+                {t('nav.portfolio')}
+              </button>
+              <button onClick={() => scrollToSection('methodology')} className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left">
+                {t('nav.approach')}
+              </button>
+              <button onClick={() => scrollToSection('contact')} className="text-3xl font-black text-foreground hover:text-accent-magenta transition-colors text-left">
+                {t('nav.contact')}
+              </button>
               <div className="h-[1px] w-full bg-foreground/10 my-4" />
               <button
                 onClick={() => scrollToSection('contact')}
