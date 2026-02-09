@@ -39,9 +39,9 @@ const serviceOptions = [
 
 const detailOptions: Record<string, string[]> = {
     'WEB & APPS': ['Site Vitrine', 'SaaS complet', 'E-commerce', 'Refonte UI/UX'],
-    'IA & AUTOMATISATION': ['Automatisation IA', 'Chatbot Intelligent', 'Analyse de Données', 'Custom Agent'],
-    'PRODUCTION VISUELLE': ['Photoshoot', 'Vidéo Pub', 'Brand Movie', 'Drone 4K'],
-    'CONTENT & POST-PROD': ['Montage Vidéo', 'Retouche Photo', 'Contenu Réseaux Sociaux', 'Motion Design'],
+    'IA & AUTOMATISATION': ['Automatisation IA', 'Chatbot Intelligent'],
+    'PRODUCTION VISUELLE': ['Photoshoot', 'Vidéo Pub', 'Drone 4K'],
+    'CONTENT & POST-PROD': ['Montage Vidéo', 'Retouche Photo', 'Contenu Réseaux Sociaux'],
 };
 
 const budgetOptions = ['-500€', '500€ - 1000€', '1000€ - 2000€', '2000€+'];
@@ -256,7 +256,7 @@ export default function SmartFunnel() {
                                             />
                                         </div>
                                         <div className="space-y-2 text-left">
-                                            <label className="text-[10px] uppercase tracking-[0.3em] text-text-secondary font-black px-2">Canal</label>
+                                            <label className="text-[10px] uppercase tracking-[0.3em] text-text-secondary font-black px-2">Mail</label>
                                             <input
                                                 type="email"
                                                 placeholder="votre@email.com"
@@ -285,7 +285,7 @@ export default function SmartFunnel() {
                                             disabled={!data.name || !data.email || isSubmitting}
                                             className="flex-grow px-8 py-4 rounded-xl bg-accent-magenta text-white font-black uppercase text-xs disabled:opacity-50 flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(255,0,128,0.4)] hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_30px_rgba(255,0,128,0.2)]"
                                         >
-                                            {isSubmitting ? 'Transmission...' : 'Initier le Projet'} <Zap size={16} />
+                                            {isSubmitting ? 'Transmission...' : 'Envoyer'} <Zap size={16} />
                                         </button>
                                     </div>
                                     {error && (

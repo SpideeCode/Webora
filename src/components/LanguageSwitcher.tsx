@@ -12,10 +12,19 @@ export default function LanguageSwitcher() {
         { code: 'en', label: 'EN' }
     ];
 
-    const currentLanguage = languages.find(l => l.code === i18n.language) || languages[0];
+    const currentCode = i18n.language ? i18n.language.split('-')[0] : 'fr';
+    const currentLanguage = languages.find(l => l.code === currentCode) || languages[0];
 
-    const changeLanguage = (code: string) => {
-        i18n.changeLanguage(code);
+    const changeLanguage = async (code: string) => {
+        if (code !== 'fr' && !i18n.hasResourceBundle(code, 'translation')) {
+            try {
+                const resources = await import(`../locales/${code}.json`);
+                i18n.addResourceBundle(code, 'translation', resources.default, true, true);
+            } catch (error) {
+                console.error(`Failed to load locale: ${code}`, error);
+            }
+        }
+        await i18n.changeLanguage(code);
         setIsOpen(false);
     };
 

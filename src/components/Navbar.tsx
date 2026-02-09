@@ -44,10 +44,10 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { id: 'services', label: t('nav.expertises') },
-    { id: 'realisations', label: t('nav.portfolio') },
-    { id: 'methodology', label: t('nav.approach') },
-    { id: 'contact', label: t('nav.contact') }
+    { id: 'services', label: 'Services' },
+    { id: 'realisations', label: 'Portfolio' },
+    { id: 'methodology', label: 'Méthodologie' },
+    { id: 'contact', label: 'Contact' }
   ];
 
   return (
@@ -74,17 +74,23 @@ export default function Navbar() {
             </span>
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className="text-xs uppercase tracking-[0.2em] font-bold text-text-secondary hover:text-accent-cyan transition-colors"
+                style={{ fontSize: '11px' }} // Slightly smaller for better fit
               >
                 {link.label}
               </button>
             ))}
+          </div>
+
+          {/* Desktop Controls - Right */}
+          <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-4 border-l border-white/10 dark:border-white/10 border-black/10 pl-8">
               <ThemeToggle />
               <LanguageSwitcher />
